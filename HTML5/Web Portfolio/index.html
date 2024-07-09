@@ -25,5 +25,65 @@
             </div>
         </div>
     </div>
+    <!-- About Me Section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.png" alt="sneha image">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>With over 12 years of experience in the IT and Education industries, I have honed my skills in identifying operational gaps and implementing effective strategies to address them. My track record includes transforming the careers of over 8000 students and providing quick and efficient solutions to business problems. As a Manager, Corporate Trainer, and Developer, I excel in people management and attention to detail, enabling me to build and maintain strong professional relationships. I am passionate about solution-based work and thrive in roles that allow me to make a positive impact. Let's connect and discuss how I can contribute to your team.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Databases</span><br>MySQL, PostgreSQL, Oracle & SQL Server </li>
+                            <li><span>Web Technologies</span><br>HTML5, CSS3, JavaScript, Bootstrap, ES6, Node JS, React JS, Redux, Django</li>
+                            <li><span>Programming Languages</span><br>Python & C#</li>
+                            <li><span>Version Control Tools</span><br>GitHub</li>
+                            <li><span>Data Science</span><br>Numpy, Pandas, Machine Learning, Scikit-Learn, Natural Language Processing, Deep Learning, Keras</li>
+                            <li><span>Data Visualization</span><br>Excel, Google Sheets, Matplotlib, Seaborn, Amazon QuickSight</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2024 - Current</span><br>IT Lead @ Hunarho Learning Solutions Pvt. Ltd.</li>
+                            <li><span>2019 - 2023</span><br>Senior Training & Strategy Manager @ Itvedant Education Pvt. Ltd.</li>
+                            <li><span>2015 - 2018</span><br>Regional Academics Head (Deputy Manager) @ Aptech Limited,</li>
+                            <li><span>2014 - 2015</span><br>Senior Trainer @ ITSource Technologies Ltd</li>
+                            <li><span>2013 - 2014</span><br>Corporate Trainer @ CMC Limited</li>
+                            <li><span>2010 - 2012</span><br>Software Developer @ CMC Limited</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2015</span><br>MCA, University of Mumbai</li>
+                            <li><span>2010</span><br>BCA, University of Pune</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var tablinks=document.getElementsByClassName("tab-links");
+    var tabcontents=document.getElementsByClassName("tab-contents");
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link")
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab")
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab")
+    }
+</script>
 </body>
 </html>
