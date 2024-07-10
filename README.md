@@ -2,15 +2,15 @@ Welcome, Hunarho Students! This repository is a collaborative space for you to e
 
 **Contributing:**
 
-**1. Project Structure:**
---> Create a folder for each concept you're studying (e.g., "Web Designing", "Node JS").
---> Create a subfolder Inside each concept folder for each project (e.g., "Web Designing/Web Portfolio").
-
-**2. README in your project folder:**
-In each project folder, create a README.md file explaining your project. Include details like:
---> Project Title
---> Brief Description
---> Technologies used (if applicable)
---> Screenshots or GIFs (optional)
---> Link to a live demo (optional)
+**1. Project Structure:** <br/>
+--> Create a folder for each concept you're studying (e.g., "Web Designing", "Node JS").<br/>
+--> Create a subfolder Inside each concept folder for each project (e.g., "Web Designing/Web Portfolio").<br/>
+<br/><br/>
+**2. README in your project folder:**<br/>
+In each project folder, create a README.md file explaining your project. Include details like:<br/>
+--> Project Title<br/>
+--> Brief Description<br/>
+--> Technologies used (if applicable)<br/>
+--> Screenshots or GIFs (optional)<br/>
+--> Link to a live demo (optional)<br/>
 
