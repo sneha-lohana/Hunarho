@@ -21,6 +21,7 @@ Below you will find the related lecture code to any given section and lesson. En
 
 # Code
 
-[Creating HTML and CSS files](../Web-Designing/Web-Portfolio/ca75055b0ff0fdc5e32b6371b21521a1764222f8)
+[1. Creating HTML and CSS files](https://github.com/sneha-lohana/Hunarho/commit/ca75055b0ff0fdc5e32b6371b21521a1764222f8) <br/>
+[2. Adding Header Section to Web Portfolio](https://github.com/sneha-lohana/Hunarho/commit/751726ea83aeabfdd505de78797bc4e524a66378) <br/>
 
 
