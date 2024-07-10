@@ -11,6 +11,7 @@ This project aims to develop a personal website showcasing your skills, experien
 5. **Responsive Design:** Ensure the website displays well across different devices (desktop, mobile, tablet).<br/>
 6. **Clean and User-Friendly Interface:** Prioritize an easy-to-navigate layout that guides visitors through your information.<br/>
 <br/>
+
 **Technologies (This can be adapted based on your chosen development approach):** <br/>
 1. HTML5: Provides the basic structure and content of the website.<br/>
 2. CSS3: Styles the website for visual appeal and layout.<br/>
