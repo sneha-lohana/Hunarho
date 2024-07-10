@@ -12,13 +12,15 @@
         <div class="container">
             <nav>
                 <img src="images/logo-sl1.png" class="logo">
-                <ul>
+                <ul id="sidemenu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Corporate Trainer</p>
@@ -139,6 +141,7 @@
                     <p><i class="fa-solid fa-phone-volume"></i> 9820610877</p>
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/sneha-lohana-60740747/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/sneha-lohana"><i class="fa-brands fa-github"></i></a>
                     </div>
                     <a href="images/Sneha-Lohana-Resume.pdf" download class="btn btn2">Download Resume</a>
                 </div>
@@ -169,6 +172,14 @@
         }
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab")
+    }
+
+    var sidemenu = document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right="0";
+    }
+    function closemenu(){
+        sidemenu.style.right="-200px"
     }
 </script>
 </body>
