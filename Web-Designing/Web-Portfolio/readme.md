@@ -22,6 +22,8 @@ Below you will find the related lecture code to any given section and lesson. En
 # Code
 
 [1. Creating HTML and CSS files](https://github.com/sneha-lohana/Hunarho/commit/ca75055b0ff0fdc5e32b6371b21521a1764222f8) <br/>
-[2. Adding Header Section to Web Portfolio](https://github.com/sneha-lohana/Hunarho/commit/751726ea83aeabfdd505de78797bc4e524a66378) <br/>
+[2. Adding Header Section](https://github.com/sneha-lohana/Hunarho/commit/751726ea83aeabfdd505de78797bc4e524a66378) <br/>
+[3. Adding About Section](https://github.com/sneha-lohana/Hunarho/commit/ca973755fca6e55ca6ac2bdcca96a0f97f9603c7) <br/>
+[4. Adding Services Section](https://github.com/sneha-lohana/Hunarho/commit/2aeaee520f0c2985c14a82251ed699426232fad7) <br/>
 
 
