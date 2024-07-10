@@ -26,10 +26,10 @@ Below you will find the related lecture code to any given section and lesson. En
 [3. Adding About Section](https://github.com/sneha-lohana/Hunarho/commit/ca973755fca6e55ca6ac2bdcca96a0f97f9603c7) <br/>
 [4. Adding Services Section](https://github.com/sneha-lohana/Hunarho/commit/2aeaee520f0c2985c14a82251ed699426232fad7) <br/>
 [5. Adding Portfolio Section](https://github.com/sneha-lohana/Hunarho/commit/c188aeaa42c31bde50da6647fbac006ef2c22501) <br/>
-[6. Adding Contact Section](https://github.com/sneha-lohana/Hunarho/commit/b8275bc5b1c54decb9d9492268fea7318e8884fc) <br\>
-[7. Making the website responsive]() <br\>
-[8. Making website menu scrollable]() <br\>
-[9. Send the form data to Google Sheet]() <br\>
+[6. Adding Contact Section](https://github.com/sneha-lohana/Hunarho/commit/b8275bc5b1c54decb9d9492268fea7318e8884fc) <br/>
+[7. Making the website responsive]() <br/>
+[8. Making website menu scrollable]() <br/>
+[9. Send the form data to Google Sheet]() <br/>
 
 
 
