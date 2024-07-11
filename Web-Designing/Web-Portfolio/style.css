@@ -17,6 +17,7 @@ body{
     background-image: url(images/background-wp-sneha2.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 .container{
     padding: 10px 10%;
@@ -24,8 +25,12 @@ body{
 nav{
     display: flex;
     align-items: center;
-    justify-content: space-between;
     text-wrap: wrap;
+}
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 .logo{
     width: 140px;
@@ -282,6 +287,7 @@ nav ul li a:hover::after{
 .btn.btn2{
     display: inline-block;
     background: #ff004f;
+    cursor: pointer;
 }
 .contact-right form{
     width: 100%;
