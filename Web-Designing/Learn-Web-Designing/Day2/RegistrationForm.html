@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Values</title>
+</head>
+<body>
+    <form action="#" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" placeholder="Enter your name"></td>
+            </tr>
+            <tr>
+                <td><label for="rusername">Username:</label></td>
+                <td><input type="text" id="rusername" name="rusername" placeholder="Enter Username"></td>
+            </tr>
+            <tr>
+                <td><label for="rpassword">Password:</label></td>
+                <td><input type="password" id="rpassword" name="rpassword" placeholder="Enter your password"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" id="email" name="email" placeholder="Enter your email address"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="number" id="age" name="age" placeholder="Enter your age"></td>
+            </tr>
+            <tr>
+                <td><label for="birthdate">Birthdate:</label></td>
+                <td><input type="date" id="birthdate" name="birthdate"></td>
+            </tr>
+            <tr>
+                <td><label for="avatar">Select your avatar:</label></td>
+                <td><input type="file" id="avatar" name="avatar" multiple></td>
+            </tr>
+            <tr>
+                <td><label for="degree">Qualification:</label></td>
+                <td>
+                    <select id="degree" name="degree">
+                        <option value="">Select an Option</option>
+                        <option value="Under Graduate">Under Graduate</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Post Graduate">Post Graduate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="color">Choose a color:</label></td>
+                <td>
+                    <select id="color" name="color" multiple>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="yourself">Describe Yourself:</label></td>
+                <td><textarea rows="5" cols="50" id="yourself" name="yourself"></textarea></td>
+            </tr>
+            <tr>
+                <td>    
+                    <input type="checkbox" id="agree" name="agree" value="agree">
+                    <label for="agree">I agree to the terms and conditions</label>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="send" id="send"></td>
+            </tr>
+            <tr>
+                <!-- <td><input type="text" name="userid" id="userid" value="20"></td> -->
+                <td><input type="hidden" name="userid" id="userid" value="20"></td>
+
+            </tr>
+        </table>
+    </form>    
+</body>
+</html>

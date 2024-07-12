@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tag</title>
+</head>
+<body>
+    <p>Basic Table</p>
+    <table>
+        <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Hobbies</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Sneha</td>
+            <td>Singing</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Ashish</td>
+            <td>Reading</td>
+        </tr>
+    </table>
+    <p>Basic Table with border, alignment, Height and Width</p>
+    <table border="1px" align="center" width="300px" heigth="300px">
+        <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Hobbies</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Sneha</td>
+            <td>Singing</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Ashish</td>
+            <td>Reading</td>
+        </tr>
+    </table>
+    <p>Table with complete Structure</p>
+    <table height="300px" width="300px" border="2px">
+        <thead align="center">
+          <tr>
+            <th>Month</th>
+            <th>Savings</th>
+          </tr>
+        </thead>
+        <tbody align="right">
+          <tr>
+            <td>January</td>
+            <td>Rs. 10000</td>
+          </tr>
+          <tr>
+            <td>February</td>
+            <td>Rs. 8000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Sum</td>
+            <td>Rs. 18000</td>
+          </tr>
+        </tfoot>
+      </table>
+      <table cellpadding="10px" cellspacing="10px" border="1px">
+        <caption>Student Information</caption>
+        <tr>
+            <th>Class</th>
+            <th>Name</th>
+            <th colspan="2">Hobbies</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Master Class</td>
+            <td>Sneha</td>
+            <td>Singing</td>
+            <td>Dancing</td>
+        </tr>
+        <tr>
+            <td>Ashish</td>
+            <td colspan="2">Reading</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<!-- <table border=”npx” align=”value” width=”npx” height=”npx” 
+    cellpadding=”npx” cellspacing=npx”>       
+    <caption> Some Caption </caption>  
+    <thead align=”value”> 
+        <th align=”value”> Table Heading</th> 
+    </thead>
+    <tbody align=”value”> 
+        <tr align=”value” rowspan="value"> 
+            <td align=”value” colspan=”value”> Table Data</td> 
+        </tr>
+    </tbody>
+    <tfoot align=”value”> 
+        <tr> <td> Table Data </td> </tr> 
+    </tfoot>
+</table>
+     -->
