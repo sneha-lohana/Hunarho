@@ -1,0 +1,56 @@
+/* Tag Selector */
+h1{
+    color: red;
+}
+b{
+    color: rgb(72, 39, 102);
+}
+/* ID Selector */
+/* 
+ID is for Unique properties
+When you want to give different property for similar tags we use ID Selector */
+#group{
+    color: blue;
+}
+
+/* Class Selector */
+/* 
+Class is for Common Properties
+When you want to implement same property to multiple tags then we use Class Selector */
+.content{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Group Selector */
+/* When you want to give common property to different tags, elements, selectors
+
+selector1, selector2, .... selectorn{
+property: value;
+}*/
+
+p, .content, #group{
+    font-size: large;
+}
+
+/* Combinator Selector */
+/* Descendent selector  (space) */
+div p{
+    color: red;
+}
+
+/* Child selector > */
+div>p{
+    color: blueviolet;
+}
+/* adjacent sibling selector  + */
+div+p{
+    color: green;
+}
+/* general sibling selector ~ */
+div~ul{
+    color: brown;
+}
+/* Pseudo Class Selector */
+/* Hover Effect */
+a:hover{
+    color: red;
+}
