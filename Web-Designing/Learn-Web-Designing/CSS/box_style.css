@@ -1,0 +1,61 @@
+/* Box Property */
+/* Types of Layouts 
+1. Static: Dimension is given in pixel
+2. Fluid: Dimension is give in percentage*/
+p{
+    /* width: 400px; */
+    width: 50%;
+    height: 400px;
+    border-style: solid;
+    /* solid|dotted|dashed */
+    border-width: 5px;
+    border-color: darkblue;
+    border-radius: 10px;
+
+    border-bottom-width: 5px;
+    border-bottom-color: blueviolet;
+    border-bottom-style: dashed;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    /* margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    margin-right: 10px; */
+
+    /* Shorthand Property of CSS 
+    margin: top right bottom left
+    */
+    /* margin: 30px 10px 30px 30px; */
+
+    /* If margin is same in all sides */
+    /* margin: 30px; */
+
+    /* Horizontal Margin - 30px
+    Vertical Margin - 10px */
+
+    /* margin: 30px 10px; */
+    
+    /* If you want to add the content in the center use auto 
+    Auto will be applicable to only left and right*/
+    margin: 30px auto;
+
+    text-align: justify;
+    /* padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px; */
+
+    /* Shorthand Property of CSS 
+    padding: top right bottom left
+    */
+    padding: 10px;
+
+    /* While dealing with multiple cards or boxes this property will help in maintaining the box size */
+    box-sizing:border-box;
+}
+input{
+    border: 0px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}

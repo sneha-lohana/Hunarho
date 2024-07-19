@@ -1,0 +1,43 @@
+/* Colour Property */
+/* There are 3 ways to give color
+1. Name
+2. Hexcode
+3. rgb(red intensity, green intensity, blue intensity)
+(value range: 0 to 255)
+4. rgba()
+A stands for opacity
+value range: 0 to 1 
+0 is the faint color 1 is dark color
+*/
+
+h1{
+    color: rgba(230, 150, 32,0.5);
+}
+p{
+    color: black;
+}
+/* Text Properties */
+p{
+    text-align: justify;
+    /* Default-left
+    left|right|center|justify */
+    text-decoration: none;
+    /* underline|overline|line-through|none */
+    text-transform: capitalize;
+    /* uppercase|lowercase|capitalize */
+    text-indent: 100px;
+    line-height: 30px;
+    word-spacing: 10px;
+    letter-spacing: 2px;
+}
+a{
+    text-decoration: none;
+}
+/* Font Properties */
+p{
+    font-size: 25px;
+    font-weight: bold;
+    /* Bold|bolder|normal */
+    font-family: "Playwrite PE",'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+}

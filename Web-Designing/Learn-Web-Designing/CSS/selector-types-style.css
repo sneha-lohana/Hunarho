@@ -1,0 +1,35 @@
+/* Pseudo Class Selector */
+/* Hover Effect */
+a:hover{
+    color: red;
+}
+a:active{
+    color: yellowgreen;
+    background-color: black;
+}
+a:visited{
+    color: green;
+}
+a:link{
+    color: brown;
+}
+input:focus{
+    width:400px;
+}
+/* Attribute Selector */
+input[type]{
+    background-color: green;
+}
+input[type="submit"]{
+    background-color: aquamarine;
+}
+
+/* Universal Selector */
+*{
+    font-family: monotype corsiva;
+    background-color: yellowgreen;
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+}
