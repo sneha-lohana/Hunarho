@@ -1,0 +1,19 @@
+/* Gradient Property 
+background-image: linear-gradient(direction, col1, col2 .... colN);
+default direction is from top to bottom
+direction: to bottom (from top to bottom)
+        :to right (from left to right)
+        :to left (from right to left)
+        :to top (from bottom to top)
+diagonal: to bottom right (from top left to bottom right)
+        :to top right (from bottom left to top right)
+        :to top left (from bottom right to top left)
+        :to bottom left (from top right to bottom left)
+radial-gradient(col1, col2,...colN)
+*/
+.grad{
+    height: 500px;
+    /* background-image: linear-gradient(to bottom right, red, yellow); */
+    background-image: radial-gradient(red, yellow);
+    
+}

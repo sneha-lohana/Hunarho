@@ -1,0 +1,28 @@
+/* Background Property */
+
+#bg{
+    /* Background Color */
+    background-color: gainsboro;
+    height: 500px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 130px;
+    box-sizing: border-box;
+    color: white;
+
+    /* Background Image */
+    background-image: url(images/galaxy.jpeg);
+    background-repeat: no-repeat;
+    /* no-repeat | repeat(default) | repeat-x | repeat-y */
+    /* background-size: cover; */
+    /* cover will span the image as per the browser, but while viewing on different devices the image won't be properly viewable use percentage instead */
+    background-size: 100%;
+
+/* Creating the Parallax Effect */
+    background-attachment: fixed;
+}
+#dummy_box{
+    border-style: solid;
+    height: 2000px;
+}

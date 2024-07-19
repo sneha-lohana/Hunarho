@@ -1,0 +1,31 @@
+/* Display Properties */
+/* This property is used to convert Block Level element to inline level element and vice versa 
+inline | inline-block (width property can be applied) | block | none (hide the element)
+*/
+h1,p{
+    display: inline-block;
+    /* display: none; */
+    border-style: solid;
+    width: 400px;
+}
+b,i{
+    display: block;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+ul li{
+    text-decoration: none;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    margin-right: 10px;
+    height: 20px;
+}
+ul li:hover{
+    background-color: #fbca04;
+}
+a:hover{
+    color: white;
+}

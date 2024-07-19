@@ -1,0 +1,51 @@
+/* Position Properties
+Types:
+1. static (default)
+2. fixed : boundaries are the reference point
+3. relative : element position the reference point. i.e. element can be placed on the browser relative to its own position 
+Relative is majorly used for animation and styling
+4. absolute: first element is taken as reference point 
+
+position: static | fixed | relative | absolute
+*/
+
+.four{
+    color: red;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.eight{
+    color: blueviolet;
+    position: relative;
+    top: 30px;
+}
+
+.nine{
+    color: green;
+    position: absolute;
+    top: 50px;
+}
+/* Float Property */
+img{
+    float:right;
+}
+
+/* float clear property 
+clear: left | right | both
+*/
+#box1{
+    border-style: solid;
+    width: 60%;
+    float: left;
+}
+#box2{
+    border-style: solid;
+    width: 30%;
+    float: right;
+}
+#box3{
+    border-style: solid;
+    clear: both;
+}

@@ -1,0 +1,39 @@
+/* Animation Property */
+/* Animation property: with this property we can make the html element to change gradually from one form to another form.
+
+We need to define Keyframe rules
+
+@keyframes animation_name{
+from{property:value}
+to{property:vale}
+}*/
+
+.anim{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    color: wheat;
+    text-align: center;
+    animation-name: myanim;
+    animation-duration: 8s;
+    position: relative;
+
+    /* Repeat the animation
+    number | infinate */
+    animation-iteration-count: infinite;
+}
+
+@keyframes myanim{
+    /* from{background-color: red;}
+    to{background-color: green;} */
+
+    /* 0%{background-color: red;}
+    25%{background-color: yellow;}
+    50%{background-color: blue;}
+    75%{background-color: green;}
+    100%{background-color: pink;} */
+
+    from{left:0px; top:0px}
+    /* to{left:500px; top:0px} */
+    to{left:100%; top:0px}
+}
