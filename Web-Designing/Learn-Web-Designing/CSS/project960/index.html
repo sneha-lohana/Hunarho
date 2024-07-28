@@ -1,0 +1,94 @@
+<!-- 
+Need of grid System?
+With the grid system, we can place any element precisely on the web page
+
+What is Grid?
+Structure that contains rows and columns
+The intersection of the row and column gives an area called as cell or box.
+Box is the basic unit of any website grid system
+
+Bootstarp gris system: 12 column grid system means a row is divided into 12 columns. There are 12 box in a row
+
+960 grid system:
+1> 12 columns
+2> 16 columns
+3> 24 columns
+
+Grid 960 is a CSS file which contains predefined  classes which are used to create a grid system in our website.
+
+Website to download grid 960 css - 960.gs
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <link rel="stylesheet" href="960_12_col.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container_12">
+        <!-- Header Start -->
+        <div class="grid_3 box">
+            <img src="images/hunarho_logo.png" alt="hunarho_logo" width="220px">
+        </div>
+        <div class="grid_9 box cname">
+            <h1>Hunarho Learning Solutions Pvt. Ltd.</h1>
+        </div>
+        <div class="clear"></div>
+        <!-- Menu Start 
+        Home About Courses Contact 
+        -->
+        <div class="grid_3 menu">
+            <a href="index.html">Home</a>
+        </div>
+        <div class="grid_3 menu">
+        <a href="about.html">About</a>
+        </div>
+        <div class="grid_3 menu">
+        <a href="courses.html">Courses</a>
+        </div>
+        <div class="grid_3 menu">
+        <a href="contact.html">Contact</a>
+        </div>
+
+        <!-- Menu End -->
+        <div class="clear"></div>
+        <!-- Banner Start -->
+        <div class="grid_12 banner">
+            <img src="images/banner.png" alt="Banner" width="940px">
+        </div>
+        <!-- Banner End -->
+        <div class="clear"></div>
+        <!-- Header End -->
+        <!-- Courses Start -->
+         <div class="grid_12 section">
+            Our Courses
+         </div>
+         <div class="clear"></div>
+        <div class="grid_4 course_item">
+            <img src="images/item1.jpg" alt="Item 1" width="280px" height="200px">
+            <p>Applied Finance, Credit and Crime Risk Management - IIT Roorkee​</p>
+            <button>Enquire Now</button>
+        </div>
+        <div class="grid_4 course_item">
+            <img src="images/item2.webp" alt="Item 2" width="280px" height="200px">
+            <p>Advanced Certification in Digital Marketing​</p>
+            <button>Enquire Now</button>
+        </div>
+        <div class="grid_4 course_item">
+            <img src="images/item3.jpg" alt="Item 3" width="280px" height="200px">
+            <p>Data Science & Data Analytics​</p>
+            <button>Enquire Now</button>
+        </div>
+        <!-- Courses end -->
+         <div class="clear"></div>
+         
+    </div>
+</body>
+</html>

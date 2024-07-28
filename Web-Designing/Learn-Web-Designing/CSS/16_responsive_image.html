@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image</title>
+</head>
+<body>
+    <!-- <dl>
+        <dt>Static</dt>
+        <dd>In this layout all dimension or width and height (box) are mentioned in pixel.
+        width:200px;
+        height: 200px;
+        Grid 960 there all diemension are in pixel.</dd>
+        <dt>Fluid</dt>
+        <dd>In this layout all dimension or width and height (box) are mentioned in percentage.
+        width:50% available screen widthx 0.5</dd>
+        <dt>adpative</dt>
+        <dd>In this layout dimension are in pixel. But there are different layout of website view designed in css that get applied based on certain screensize threshold value.
+        The pixel value at which one layout get changed to another layout is called as Breakpoint.</dd>
+        <dt>responsive</dt>
+        <dd>adaptive+fluid.</dd>
+    </dl> -->
+
+    <!-- Using Media Query -->
+    <picture>
+        <source media="(max-width: 700px)" srcset="images/whatsApp.jpeg">
+        <source media="(max-width: 900px)" srcset="images/galaxy.jpeg">
+        <img src="images/lotus.png" alt="whatsApp Logo">
+    </picture>
+</body>
+</html>

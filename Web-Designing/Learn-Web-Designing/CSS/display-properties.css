@@ -2,7 +2,7 @@
 /* This property is used to convert Block Level element to inline level element and vice versa 
 inline | inline-block (width property can be applied) | block | none (hide the element)
 */
-h1,p{
+h1, p{
     display: inline-block;
     /* display: none; */
     border-style: solid;
@@ -28,4 +28,42 @@ ul li:hover{
 }
 a:hover{
     color: white;
+}
+/* Default CSS */
+div{
+    height:100px;
+    background-color:#FFFFFF;
+}
+blockquote{
+    background-color: blue;
+    padding: 10px;
+    margin: 20px; 
+}
+span{
+    background-color: red;
+    padding: 10px;  
+    color: white;
+}
+/* Inline Display */
+.dis_il blockquote{
+    background-color: blue;
+    padding: 10px;
+    margin: 20px; 
+    display: inline;
+}
+
+/* Block Display */
+.dis_bk blockquote{
+    background-color: blue;
+    padding: 10px;
+    margin: 20px; 
+    display: inline-block;
+    width: 25%;
+}
+/* Flex Display */
+.dis_fx blockquote{
+    background-color: blue;
+    padding: 10px;
+    margin: 20px; 
+    display: flex;
 }

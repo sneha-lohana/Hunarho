@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <style>
+        #media_box{
+            height: 300px;
+            border-style: solid;
+            float: left;
+            box-sizing: border-box;
+        }
+        /* If screen Size is 510 and above then width of the box or div is 25% 
+        
+        If screen Size is less than 510 then width of the box or div is 100% 
+
+        @media only screen and  (min-width:npx){
+        }
+        */
+
+        .col-4{
+            width: 25%;
+        }
+
+        @media only screen and (max-width: 600px){
+            .col-4{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="media_box" class=" col-4">BOX1</div>
+    <div id="media_box" class="col-4">BOX2</div>
+    <div id="media_box" class=" col-4">BOX3</div>
+    <div id="media_box" class=" col-4">BOX4</div>
+</body>
+</html>
