@@ -1,0 +1,29 @@
+.name{
+    color: chartreuse;
+}
+.rgb{
+    color: rgb(134, 45, 207);
+}
+.hex{
+    color: #33969b ;
+}
+.rgba{
+    color: rgba(10, 34, 35,0.8);
+}
+/* Text Property */
+div{
+    text-align: justify;
+    /* text-decoration: underline; */
+    text-indent: 20px;
+    /* line-height: 50px;
+    word-spacing: 20px;
+    letter-spacing: 10px; */
+    text-transform: capitalize;
+
+    /* Font Properties */
+    font-size: normal;
+    font-weight: bolder;
+    font-style: unset;
+    font-family: "Edu AU VIC WA NT Hand", cursive, Verdana, Geneva, Tahoma, sans-serif;
+}
+

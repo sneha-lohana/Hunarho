@@ -1,0 +1,80 @@
+/* Tag Selector */
+h1{
+    color: gray;
+}
+/* Class Selector
+.classname{
+}
+*/
+.content{
+    color: cyan;
+}
+/* Id Selector
+#id_name{
+} */
+ #id_select
+ {
+    color: rgb(223, 128, 12);
+ }
+ /* Group Selector
+ 
+ selctor1, selector2..... selector N{
+}*/
+#id_select, .content, ol{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+}
+/* Combinator Selector */
+/* descendant Selector - space */
+div p, h3{
+    color: blueviolet;
+}
+/* Child Selector - > */
+section>p{
+    color: aquamarine;
+}
+/* Adjecent Sibling Selector - + */
+div+p{
+    color: blue;
+}
+/* General Sibling Selector */
+div~div{
+    color: red;
+}
+
+/* Pseudo Class Selector 
+selector:action{
+}*/
+a:hover{
+    color: black;
+    background-color: goldenrod;
+}
+a:active{
+    color: red;
+}
+a:visited{
+    color: blueviolet;
+}
+a:link{
+    color: brown;
+}
+input:focus{
+    border-radius: 15px;
+}
+
+/* Attribute Selector */
+input[type]{
+    background-color: azure;
+}
+input[type="submit"]{
+    background-color: black;
+    color: gold;
+}
+input[type]:hover{
+    width: 250px;
+}
+/* Universal Selector */
+*{
+    font-family: monotype corsive;
+    background-color: beige;
+}

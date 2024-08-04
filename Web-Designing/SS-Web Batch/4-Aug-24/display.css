@@ -1,0 +1,64 @@
+.box{
+    width: 30%;
+    height: 200px;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+
+    margin: 15px;
+
+    padding: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+
+}
+p{
+    display: inline;
+}
+strong{
+    display: block;
+}
+ul li{
+    display: inline-block;
+    width: 70px;
+    /* height: 30px; */
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+}
+a{
+    color: beige;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(216, 18, 18);
+}
+ul li:hover{
+    background-color: beige;
+}
+
+blockquote{
+    background-color: aquamarine;
+    height: 20px;
+    padding: 7px;
+}
+span{
+    background-color: antiquewhite;
+    color: blue;
+    padding: 3px;
+}
+.dis_bk{
+    display: none;
+}
+
+
+.dis_il{
+    display: inline;
+}
+
+.dis_fx{
+    display: flex;
+}

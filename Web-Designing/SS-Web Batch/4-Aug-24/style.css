@@ -1,0 +1,65 @@
+.bg{
+    background-color: rgba(133, 240, 204, 0.466);
+    height: 500px;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 20px;
+    color: orange;
+
+    /* Background image */
+    background-image: url(images/hunarho.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%; 
+    /* background-size: cover; */
+
+    /* Parallex Effect */
+    background-attachment: fixed;
+}
+
+.dummy_box{
+    height: 500px;
+    border-style: dashed;
+    border-radius: 20px;
+}
+.img_position{
+    position: fixed; width: 50px; height: 50px; bottom: 20px;
+    right: 30px;
+}
+.four{
+    position: fixed;
+}
+.eight{
+    position: relative; top: 30px; left: 100px; 
+    color: blueviolet;
+}
+.thirteen{
+    position: absolute; top: 20px; color: yellow;
+}
+img{
+    float: left;
+}
+p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+.box1{
+    border-style: solid;
+    width: 20%;
+    padding: 10px;
+    text-align: justify;
+    box-sizing: border-box;
+    float: left;
+}
+.box2{
+    border-style: solid;
+    width: 30%;
+    padding: 10px;
+    text-align: justify;
+    box-sizing: border-box;
+    float: right;
+}
+/* Clear Float */
+.box3{
+    clear: both;
+}
