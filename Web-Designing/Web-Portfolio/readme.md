@@ -27,9 +27,10 @@ Below you will find the related lecture code to any given section and lesson. En
 [4. Adding Services Section](https://github.com/sneha-lohana/Hunarho/commit/2aeaee520f0c2985c14a82251ed699426232fad7) <br/>
 [5. Adding Portfolio Section](https://github.com/sneha-lohana/Hunarho/commit/c188aeaa42c31bde50da6647fbac006ef2c22501) <br/>
 [6. Adding Contact Section](https://github.com/sneha-lohana/Hunarho/commit/b8275bc5b1c54decb9d9492268fea7318e8884fc) <br/>
-[7. Making the website responsive]() <br/>
-[8. Making website menu scrollable]() <br/>
-[9. Send the form data to Google Sheet]() <br/>
+[7. Making the website responsive](https://github.com/sneha-lohana/Hunarho/commit/de4ca21cf026f08d39bbdf8e87b3c7dc807c049b) <br/>
+[8. Making website menu scrollable](https://github.com/sneha-lohana/Hunarho/commit/a23900d603ad68810ebb87173e4887d3372ed0fe) <br/>
+[9. Send the form data to Google Sheet](https://github.com/sneha-lohana/Hunarho/commit/eee9251b9842ce600a87f91b498bb2e521491a08) <br/>
+[10. Making the NavBar Fixed and Giving the Background Image Parallax Effect](https://github.com/sneha-lohana/Hunarho/commit/f981571d80ff9fc9efc788f15077624dca563dd7)
 
 
 
