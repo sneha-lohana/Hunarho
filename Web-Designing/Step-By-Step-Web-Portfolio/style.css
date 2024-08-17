@@ -14,9 +14,15 @@ header{
     background-image: url(images/background-wp-sneha2.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 .container{
     padding: 10px 10%;
+}
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 .logo{
     width: 140px;
@@ -234,6 +240,7 @@ nav ul li a:hover::after{
 .btn.btn2{
     display: inline-block;
     background: #ff004f;
+    cursor: pointer;
 }
 .contact-right form{
     width: 100%;
@@ -266,4 +273,7 @@ form btn2{
 }
 .copyright i{
     color: #ff004f;
+}
+html{
+    scroll-behavior: smooth;
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Scope using Let</title>
+    <script>
+        var x=10;
+        document.write("Value of variable outside before block "+x+"<br>")
+        {
+            var x=20;
+            document.write("Value of variable inside block "+x+"<br>")
+        }
+        document.write("Value of variable outside after block "+x+"<br>")
+
+        let y=10;
+        document.write("Value of variable outside before block "+y+"<br>")
+        {
+            let y=20;
+            document.write("Value of variable inside block "+y+"<br>")
+        }
+        document.write("Value of variable outside after block "+y+"<br>")
+
+        const pi=3.14;
+        var area, r=10;
+        area=pi*r*r;
+        document.write("Area of circle: "+area);
+        pi=22/7;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
