@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Scope</title>
+    <script>
+        var x = 10;
+        document.write("Value of x before the block " + x + "<br>");
+        {
+            var x = 20;
+            document.write("Value of x inside block " + x + "<br>");
+        }
+        document.write("Value of x after the block " + x + "<br>");
+
+        let y = 10;
+        document.write("Value of y before the block " + y + "<br>");
+        {
+            let y = 20;
+            document.write("Value of y inside block " + y + "<br>");
+        }
+        document.write("Value of y after the block " + y + "<br>");
+
+        //Constant
+        const pi=3.14;
+        var r=3, area;
+        area = pi*r*r;
+        document.write("Area is " + area + "<br>");
+        // pi = 22/7;
+        document.write(pi); 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

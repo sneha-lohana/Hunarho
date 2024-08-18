@@ -1,0 +1,1 @@
+document.write("<h1>External JavaScript: Good Morning!</h1>")
