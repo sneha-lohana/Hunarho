@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <script>
+        function hello(){
+            alert("Hello, This is an onclick event");
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <button onclick="hello()">Click Me</button>
+        Enter: <input type="text" onkeydown="hello()">
+        <!-- onkeyup is similar to onkeydown -->
+    </form>
+    <h1 ondblclick="hello()">Double Click on me</h1>
+    <p onmouseover="hello()">Mover over</p>
+    <p onmouseout="hello()">Mover Out</p>
+</body>
+</html>

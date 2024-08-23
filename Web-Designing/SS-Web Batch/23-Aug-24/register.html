@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resigration Form</title>
+</head>
+<body>
+    <!-- <form action="">
+        form element
+    </form> -->
+    <form enctype="multipart/form-data" action="#" method="post">
+        <table>
+            <caption>Registration Form</caption>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td>
+                    <input type="text" name="name" id="name" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="mobile">Mobile</label></td>
+                <td><input type="number" name="mobile" id="mobile" required></td>
+            </tr>
+            <tr>
+                <td><label for="dob">Date of Birth</label></td>
+                <td>
+                    <input type="date" name="dob" id="dob">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email">User Name/Email</label></td>
+                <td><input type="email" name="email" id="email" required value="sneha@hunarho.com" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="pwd">Password</label></td>
+                <td><input type="password" name="pwd" id="pwd" required></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" id="m" value="M"> <label for="m">Male</label>
+                    <input type="radio" name="gender" id="f" value="F"> <label for="f">Female</label>
+                    <input type="radio" name="gender" id="t" value="T"> <label for="t">Transgender</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Skills</td>
+                <td>
+                    <input type="checkbox" name="skills" id="html"><label for="html">HTML</label>
+                    <input type="checkbox" name="skills" id="css"><label for="css">CSS</label>
+                    <input type="checkbox" name="skills" id="js"><label for="js">JavaScript</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="qual">Qualification</label></td>
+                <td>
+                    <select name="qual" id="qual">
+                        <option value="UnderGraduate">Under Graduate</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="PostGraduate">Post Graduate</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="summ">Profile Summary</label></td>
+                <td>
+                    <textarea name="summ" id="summ" cols="100" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="resume">Upload your Resume</label>
+                </td>
+                <td>
+                    <input type="file" name="resume" id="resume" multiple>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+            <input type="hidden" value="12" name="uid" id="uid">
+        </table>
+    </form>
+</body>
+</html>
