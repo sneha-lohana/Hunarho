@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handlers</title>
+    <script>
+        function hello(){
+            alert("Hi");
+        }
+        function hey(){
+            alert("U clicked me twice");
+        }
+        function key(){
+            alert("key");
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="enter your name" onkeyup="key()">
+        <!-- onkeyup
+         onkeydown 
+         onkeypress-->
+        <button onclick="hello()">Click Me</button>
+    </form>
+    <h1 onmouseover="hello()">Welcome to JavaScript Class</h1>
+    <br><br><br>
+    <h2 onmouseout="hello()">Mouse Out Example</h2>
+
+    <p ondblclick="hey()">Click me Twice</p>
+</body>
+</html>

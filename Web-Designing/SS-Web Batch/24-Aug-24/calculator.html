@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        var x, y;
+        function values(){
+            x = parseInt(prompt("Enter 1st number"));
+            y = parseInt(prompt("Enter 2nd number"));
+            // return (x, y);
+        }
+        function addition(){
+            values();
+            alert("Addition = " + (x+y));
+        }
+        function subtract(){
+            values();
+            alert("Subtraction = " + (x-y));
+        }
+        function divide(){
+            values();
+            alert("Division = " + (x/y));
+        }
+        function multiply(){
+            values();
+            alert("Product = " + (x*y));
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <p>Textboxes Here</p>
+        <button onclick="addition()">Add</button>
+        <button onclick="subtract()">Subtract</button>
+        <button onclick="divide()">Divide</button>
+        <button onclick="multiply()">Multiply</button>
+        <h2>Result</h2>
+    </form>
+</body>
+</html>
