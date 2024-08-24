@@ -6,15 +6,19 @@
     <title>Mobile Digits Validations</title>
     <script>
         function check_mobile(){
-            var styles='input:focus {background-color:red}';
-            var mobnum, count;
+            var mobnum, span;
             mobnum = document.getElementById("mob");
+            span = document.getElementById("spanid");
             // alert(mobnum.value);
             if(mobnum.value.length == 10){
-                mobnum.style.borderColor = "green";
+                mobnum.style.border = "thick solid green";
+                span.innerHTML = "Valid Mobile Number";
+                span.style.color = "green";
             }
             else{
-                mobnum.style.borderColor = "red";
+                mobnum.style.border = "thick solid red";
+                span.innerHTML = "Invalid Mobile Number";
+                span.style.color = "red";
             }
         }
     </script>
@@ -22,6 +26,8 @@
 <body>
     <form>
         <input type="number" name="mob" placeholder="Enter a number" id="mob" onkeyup="check_mobile()">
+        <br>
+        <span id="spanid" style="color: red;"></span>
     </form>
 
     <!-- Steps in checking the mobile number is valid or not
