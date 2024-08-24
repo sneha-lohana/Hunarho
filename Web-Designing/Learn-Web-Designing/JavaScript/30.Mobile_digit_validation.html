@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Digits Validations</title>
+    <script>
+        function check_mobile(){
+            var styles='input:focus {background-color:red}';
+            var mobnum, count;
+            mobnum = document.getElementById("mob");
+            // alert(mobnum.value);
+            if(mobnum.value.length == 10){
+                mobnum.style.borderColor = "green";
+            }
+            else{
+                mobnum.style.borderColor = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="number" name="mob" placeholder="Enter a number" id="mob" onkeyup="check_mobile()">
+    </form>
+
+    <!-- Steps in checking the mobile number is valid or not
+     Step1: Access the value of number in javascript function
+     Step2: Count the number of digits
+     Step3: If the number of digits are less than 10, then highlight that element bordercolor with red and with a message of invalid mobile number
+     Step4: if the number of digits are equal to 10, then highlight bordercolor with green color and with message valid mobile number -->
+</body>
+</html>

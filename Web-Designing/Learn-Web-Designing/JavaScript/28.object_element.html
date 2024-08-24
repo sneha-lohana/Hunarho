@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object from Elements</title>
+    <script>
+        function hello(){
+            // alert("Function called");
+            var x = document.getElementById('one');
+            // alert(typeof(x));
+            // Accessing the HTML element content
+            // var content=x.innerHTML;
+            // alert(content);
+            // modifying the HTML content
+            x.innerHTML="New content Assigned.";
+        }
+        function css_manip(){
+            var cssobj = document.getElementById("two");
+            // alert(cssobj.style.color);
+            // alert(cssobj.style.backgroundColor);
+            cssobj.style.color = "blue";
+            cssobj.style.backgroundColor = "wheat";
+        }
+        function value_manip(){
+            // alert("Hello");
+            var uname = document.getElementById('uname');
+            // alert(uname.value);
+            uname.value="hunarho123";
+        }
+    </script>
+</head>
+<body>
+    <h3>Example of HTML Manipulation</h3>
+    <h1 id="one" onclick="hello()">Hello We are learning DOM Manipulation</h1>
+
+    <h3>Example of CSS Manipulation</h3>
+    <h1 style="color: red; background-color: aquamarine;" onmouseover="css_manip()" id="two">CSS Manipulation</h1>
+
+    <h3>Example of Value Manipulation</h3>
+    <form>
+        <input type="text" name="uname" id="uname" placeholder="Enter UserName">
+        <button onclick="value_manip()">Click Me</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Copy</title>
+    <script>
+        function copy(){
+            var check = document.getElementById("addcopy");
+            // alert(check.checked);
+            var curadd = document.getElementById("caddid");
+            var peradd = document.getElementById("paddid");
+            if(check.checked == true){
+                peradd.value = curadd.value;
+                peradd.readOnly = true;
+            }
+            else{
+                peradd.value = "";
+                peradd.readOnly = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>This is an example of Address Copy</h3>
+    <form>
+        <textarea name="cadd" id="caddid" cols="30" rows="10"></textarea>
+        <br>
+        <input type="checkbox" onclick="copy()" name="addcopy" id="addcopy">
+        <label for="addcopy">Same as Above</label>
+        <br>
+        <textarea name="padd" id="paddid" cols="30" rows="10"></textarea>
+    </form>
+</body>
+</html>
