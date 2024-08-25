@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuipulation with Elements</title>
+    <script>
+        function html_manipulation(){
+            // alert("Hi");
+            var h1 = document.getElementById('one');
+            // alert(h1.innerHTML);
+            h1.innerHTML = "Manipulation Successful";
+        }
+
+        function css_manipulation(){
+            var css_change = document.getElementById("two");
+            // alert(css_change.style.color);
+            css_change.style.color = "aquamarine";
+
+            // alert(document.getElementById("two").style.backgroundColor);
+            document.getElementById("two").style.backgroundColor = "blue";
+        }
+
+        function value_manipulation(){
+            // alert(document.getElementById("uname").value);
+            document.getElementById("uname").value = "Hunarho";
+        }
+        function attribute_manipulation(){
+            document.getElementById("three").setAttribute("class", "beautify");
+        }
+    </script>
+    <style>
+        .beautify{
+            border-color: brown;
+            border-style: solid;
+            border-radius: 10px;
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>Example of HTML Manuipulation</h3>
+    <!-- 1. Create object the HTML Element
+     2. Accessing the content 
+     3. Manipulation-->
+    <h1 id="one" onclick="html_manipulation()">Hello We are learning JavaScript</h1>
+
+    <h3>Example of CSS Manipulation</h3>
+    <h1 style="color: blueviolet; background-color: beige;" id="two" onclick="css_manipulation()">This is CSS Manipulation</h1>
+
+    <h3>Example of Value Manipulation</h3>
+    <form>
+        <input type="text" name="uname" id="uname">
+        <button onclick="value_manipulation()">CLick me</button>
+    </form>
+
+    <h1 id="three">
+        Attribute Manipulation Example
+    </h1>
+    <button onclick="attribute_manipulation()">Click Me</button>
+</body>
+</html>

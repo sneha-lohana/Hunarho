@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects in JavaScript</title>
+    <script>
+        // defining an object
+        var car = {
+            // Properties of the object car
+            brand:"Audi",
+            model:"Q7",
+            color:"Silver",
+            // Method to the object car
+            display: function(){
+                alert("Inside the object method");
+                // This key word is used to refer to object itself
+                document.write("Model : " + this.model);
+            }
+        }
+
+
+        // Datatype of the object
+        alert(typeof(car));
+
+        // Accessing the property of the object outside the object
+        document.write("Brand: "+ car.brand + "<br>");
+        document.write("Model: "+ car.model + "<br>");
+        document.write("Color: "+ car.color + "<br>");
+        // Accessing the method
+        car.display();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

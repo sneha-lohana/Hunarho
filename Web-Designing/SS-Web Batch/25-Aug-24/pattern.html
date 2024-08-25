@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Printing</title>
+    <script>
+        function star_pattern(){
+            let rows = parseInt(prompt("Enter number of rows:"));
+            for (let r=1; r<=rows; r++){
+                // nested loop
+                for (let c=1; c<=r; c++){
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+        }
+
+        // Step 1: Accept number of rows
+        // Step 2: Loop r reverse c will normal
+        // Step 3: print
+        function reverse_star_pattern(){
+            let rows = parseInt(prompt("Enter number of rows:"));
+            for (let r=rows; r>=1; r--){
+                for (let c=1; c<=r; c++){
+                    document.write("* ");
+                }
+                document.write("<br>");
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- *
+     * * 
+     * * *
+     * * * *-->
+     <button onclick="star_pattern()">Click for Star Pattern</button>
+     <button onclick="reverse_star_pattern()">Click for Reverse Star Pattern</button>
+</body>
+</html>
