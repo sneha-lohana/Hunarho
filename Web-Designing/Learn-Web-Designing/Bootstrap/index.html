@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Ecomm|Home</title>
+</head>
+<body>
+  <header class="container">
+    <section class="row mt-5">
+      <!-- Navigation Bar Starts -->
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+          <!-- Home connected with Company Name -->
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html"><strong>Ekart</strong></a>
+              <!-- Toggle button for mobile view -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="cart.html">Cart</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="logout.html">Logout</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <!-- Navigation Bar End -->
+    </section>
+  </header>
+  <main class="container">
+      <!-- Start of Main Content -->
+      <section class="row mt-2">
+        <!-- Left Side Bar Start -->
+        <aside class="col-md-4 mt-2">
+          <h5>Filter by Category</h5>
+          <hr>
+          <p><a href="#">By Mobile</a></p>
+          <p><a href="#">By Shoes</a></p>
+          <p><a href="#">By Clothes</a></p>
+          <h5>Filter by Price</h5>
+          <hr>
+          <form>
+            <div class="mb-3">
+              <label for="minPrice" class="form-label">Min:</label>
+              <input type="number" class="form-control" id="minPrice" placeholder="Minimum Value">
+            </div>
+            <div class="mb-3">
+              <label for="maxPrice" class="form-label">Max:</label>
+              <input type="number" class="form-control" id="minPrice" placeholder="Minimum Value">
+            </div>
+            <div class="mb-3">
+              <input type="submit" class="btn btn-light" value="Search">
+            </div>
+          </form>
+          <h5>Sort by Price</h5>
+          <hr>
+          <p><a href="#">Low to High</a></p>
+          <p><a href="#">High to Low</a></p>
+        </aside>
+        <!-- Left Side Bar End -->
+        <!-- Product Listing Start -->
+        <section class="col-md-8">
+          <div class="row mt-2">
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/product.JPG" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;1000</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/adidas.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;3000</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/jeans.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;700</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/menjeans.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;560</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/iphone.png" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;115000</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/mi_mobile.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;30000</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/Samsung_12.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;47000</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card" style="width:100%;">
+                <img src="assets/images/woodland.jpg" class="card-img-top" alt="Product1" height="120px">
+                <div class="card-body">
+                  <h5 class="card-title">Product Name</h5>
+                  <p class="card-text">Product Details</p>
+                  <p class="card-text">&#8377;1560</p>
+                  <a href="product_details.html" class="btn btn-primary">Show More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Product Listing End -->
+      </section>
+      <!-- End of Main Content -->
+  </main>
+  <!-- Footer starts Here -->
+   <footer class="container">
+    
+   </footer>
+  <!-- Footed ends Here -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+</body>
+</html>
+

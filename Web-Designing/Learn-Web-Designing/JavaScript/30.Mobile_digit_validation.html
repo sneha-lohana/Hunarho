@@ -11,23 +11,61 @@
             span = document.getElementById("spanid");
             // alert(mobnum.value);
             if(mobnum.value.length == 10){
-                mobnum.style.border = "thick solid green";
+                mobnum.setAttribute("class", "form-control is-valid");
                 span.innerHTML = "Valid Mobile Number";
-                span.style.color = "green";
+                span.style.color = "#28a745";
             }
             else{
-                mobnum.style.border = "thick solid red";
+                mobnum.setAttribute("class", "form-control is-invalid");
                 span.innerHTML = "Invalid Mobile Number";
-                span.style.color = "red";
+                span.style.color = "#dc3545";
             }
         }
     </script>
+    <style>
+        .form-control{
+            display: block;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+        }
+        .form-control:focus{
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 .2rem rgba(0,123,255,.25)
+        }
+        .form-control.is-valid{
+            border-color: #28a745;
+        }
+        
+        .form-control.is-valid:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 .2rem rgba(40,167,69,.25)
+        }
+        .form-control.is-invalid{
+            border-color: #dc3545;
+        }
+        
+        .form-control.is-invalid:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 .2rem rgba(220,53,69,.25)
+        }
+    </style>
 </head>
 <body>
     <form>
-        <input type="number" name="mob" placeholder="Enter a number" id="mob" onkeyup="check_mobile()">
+        <input type="number" name="mob" placeholder="Enter a number" id="mob" onkeyup="check_mobile()" class="form-control">
         <br>
-        <span id="spanid" style="color: red;"></span>
+        <span id="spanid" style="color: #dc3545;"></span>
     </form>
 
     <!-- Steps in checking the mobile number is valid or not

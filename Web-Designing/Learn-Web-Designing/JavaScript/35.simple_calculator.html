@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script>
+        var x, y;
+        function values(){
+            // x = parseInt(document.getElementById("num1").value);
+            // y = parseInt(document.getElementById("num2").value);
+            x = parseInt(document.getElementsByClassName("num1")[0].value);
+            y = parseInt(document.getElementsByClassName("num2")[0].value);
+
+        }
+        function addition(){
+            values();
+            result_value("Addition = " + (x+y));
+        }
+        function subtract(){
+            values();
+            result_value("Subtraction = " + (x-y));
+        }
+        function divide(){
+            values();
+            result_value("Division = " + (x/y));
+        }
+        function multiply(){
+            values();
+            result_value("Product = " + (x*y));
+        }
+        function result_value(res){
+            document.getElementById("result").innerHTML = "Result: " + res;
+        }
+        function power1(){
+            values();
+            result_value(x + "<sup>" + y + "</sup> = " + Math.pow(x, y));
+        }
+        function squareroot(){
+            values();
+            result_value("Square root of : <ul> <li>" + x + " is " + Math.sqrt(x) + "</li><li>" + y + " is " + Math.sqrt(y) + "</li></ul>");
+        }
+    </script>
+</head>
+<body>
+        <p>
+            <input type="number" name="num1" class="num1" placeholder="Enter a Number">
+            <input type="number" name="num2" class="num2" placeholder="Enter a Another Number">
+        </p>
+        <button onclick="addition()">Add</button>
+        <button onclick="subtract()">Subtract</button>
+        <button onclick="divide()">Divide</button>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="power1()">Power</button>
+        <button onclick="squareroot()">Square Root</button>
+        <h2 id="result">Result</h2>
+</body>
+</html>

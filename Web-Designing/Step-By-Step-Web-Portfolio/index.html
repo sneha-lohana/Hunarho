@@ -11,19 +11,47 @@
 
     <script src="https://kit.fontawesome.com/423ef7f32a.js" crossorigin="anonymous"></script>
 
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        function validateEmailInput() {
+            const emailInput = document.getElementById('txtEmail').value;
+            const feedbackElement = document.getElementById('emailFeedback');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailRegex.test(emailInput)) {
+                feedbackElement.textContent = ""; // Email is valid
+            } else {
+                feedbackElement.textContent = "Please enter a valid email address.";
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
         <div class="container">
             <nav class="sticky">
                 <img src="images/logo-sl1.png" alt="Logo" class="logo">
-                <ul>
+                <ul id="sidemenu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Corporate Trainer</p>
@@ -41,6 +69,30 @@
                     <div class="about-col-2">
                         <h1 class="sub-title">About Me</h1>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt consequuntur et, asperiores ipsum laborum expedita hic, dolor cupiditate rem dignissimos vitae laboriosam fuga suscipit! Non architecto illum consequuntur qui iusto!</p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>Databases</span><br>MySQL, PostgreSQL, Oracle & SQL Server </li>
+                                <li><span>Web Technologies</span><br>HTML5, CSS3, JavaScript, Bootstrap</li>
+                                <li><span>Programming Languages</span><br>Python</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>2024 - Current</span><br>Student @ NY</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2024</span><br>Grade 6 from NY</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,12 +169,13 @@
                         <a href="images/resume.pdf" download class="btn btn2">Download Resume</a>
                     </div>
                     <div class="contact-right">
-                        <form>
+                        <form name="submit-to-google-sheet">
                             <input type="text" name="Name" placeholder="Your Name" required>
-                            <input type="email" name="Email" placeholder="Your Email Id" required>
+                            <input type="email" name="Email" id="txtEmail" placeholder="Your Email Id"  oninput="validateEmailInput()" required> <span id="emailFeedback" style="color: red;"></span>
                             <textarea name="message" rows="6" placeholder="Your Message"></textarea>
                             <button type="submit" class="btn btn2">Submit</button>
                         </form>
+                        <span id="msg"></span>
                     </div>
                 </div>
             </div>
@@ -133,5 +186,29 @@
             <p>Copyright &copy; Sam. Made with <i class="fa-solid fa-heart-pulse"></i> by Sam Laamb </p>
         </div>
     </footer>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right="0";
+        }
+        function closemenu(){
+            sidemenu.style.right="-200px"
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzcslbzZrZdPRuccZRAVWN3DheFyUL5dMUqCdgzvHElgATUa4ZMfmxc91_vSGL2h_l_eg/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {msg.innerHTML = "Message sent successfully" 
+                setTimeout(function(){msg.innerHTML = ""}, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,59 @@
+/* Tag Selector */
+h1{
+    color: blue;
+}
+/* Id Selector */
+#demo{
+    color: blueviolet;
+}
+/* Class Selector */
+.content{
+    color: cadetblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+/* Group selector
+When common CSS needs to be applied to multiple selectors we use group selector. We can create a group with the help of comma
+*/
+h1, #demo, .content{
+    font-size: large;
+}
+/* Combinator Selector
+
+Descendant Selector - space*/
+div p{
+    color: blueviolet;
+}
+/* Child Selector > greater than symbol */
+div>ol{
+    color: brown;
+}
+/* Adjecent Sibling Selector + plus */
+div+.demo{
+    color: green;
+}
+/* General Sibling Selector ~ tilda */
+p~p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* Pseudo Class Selectors 
+Hover */
+a:hover{
+    color: black;
+}
+
+p:hover{
+    color: chocolate;
+}
+
+a:active{
+    color: chartreuse;
+}
+
+/* a:visited{
+    color: rgb(255, 0, 170);
+} */
+
+input:focus{
+    outline: 0;
+    border-color: aquamarine;
+}

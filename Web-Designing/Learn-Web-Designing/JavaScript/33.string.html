@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+    <!-- 
+    String Object
+    String is a sequesnces of letters,numbers, special characters or combination of all
+     
+    String Definition
+    String is enclosed within '' single quote or "" double quote
+    -->
+    <script>
+        var str = 'Hunarho in single quote';
+        var str1 = "Hunarho in double quote";
+        document.write(str + "<br>");
+        document.write(str1 + "<br>");
+        document.write("Datatype: " + typeof(str)+"<br>");
+
+        document.write(str[0] + "<br>");
+
+        document.write("Total number of characters:" + str.length + "<br>");
+
+        // Looping to string
+        for(let i=0; i<str.length; i++){
+            document.write(str[i] + "<br>");
+        }
+
+        var name1 = "Hunarho", name2="Full Stack";
+        // String Methods
+        document.write(name1.concat(" - ", name2) + "<br>");
+
+        document.write(name1.toUpperCase() + "<br>");
+        document.write(name2.toLowerCase());
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
