@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Numbers in an Array</title>
+    <!-- Write a JavaScript code to display the array and using a forEach Loop display the odd numbers in the array -->
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <script>
+
+        function prime_num(num){
+            for (let i=2; i<num; i++){
+                if(num%i == 0){
+                    return false;
+                }
+            }
+            return true;
+        }
+       
+        const num = [3, 12, 23, 32, 34, 57, 99, 13, 7, 1];
+
+        document.getElementsByTagName("p")[0].innerHTML = "<h3> Number Array = [" + num+"]</h3>";
+        text = "";
+        num.forEach(n => {
+            if (n%2!=0){
+                text+= (n+"<br>");
+            }
+        })
+        document.getElementsByTagName("p")[0].innerHTML += text;
+
+        txt = "<h4>Prime Numbers in the Array</h4>";
+        num.forEach(n => {
+            if (prime_num(n)){
+                txt+= (n+"<br>");
+            }
+        })
+
+        document.getElementsByTagName("p")[1].innerHTML = txt;
+
+    </script>
+</body>
+</html>

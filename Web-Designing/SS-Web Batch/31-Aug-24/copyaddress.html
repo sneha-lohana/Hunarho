@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Address</title>
+    <script>
+        function copy(){
+            if (document.getElementById("addcopy").checked){
+                // Copy address and disable permanent address textarea
+                document.getElementById("padd").value = document.getElementById("cadd").value;
+                document.getElementById("padd").readOnly = true;
+            }else{
+                // remove address and enable textarea
+                document.getElementById("padd").value = "";
+                document.getElementById("padd").readOnly = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Copy Address</h3>
+    <form>
+        <label for="cadd">Current Address</label> 
+        <br>
+        <textarea name="cadd" id="cadd"></textarea>
+        <br>
+        <input type="checkbox" name="addcopy" id="addcopy" onclick="copy();">
+        <label for="addcopy">Same as above</label> 
+        <br>
+        <label for="padd">Permanent Address</label> 
+        <br>
+        <textarea name="padd" id="padd"></textarea>
+    </form>
+    <!-- Step 1: Create a form
+     Step 2: Writing an event handler
+     Step 3: Function to perform task -->
+</body>
+</html>

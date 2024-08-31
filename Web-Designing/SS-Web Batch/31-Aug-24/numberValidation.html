@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Validation</title>
+    <script>
+        function check_number(){
+            if (document.getElementById("num").value.length == 10){
+                // green
+                document.getElementById("num").setAttribute("class", "form-control is-valid");
+                document.getElementById("msg").innerHTML = "Valid Mobile Number";
+                document.getElementById("msg").setAttribute("style", "color: #28a745;")
+
+            }else{
+                // red
+                document.getElementById("num").setAttribute("class", "form-control is-invalid");
+                document.getElementById("msg").innerHTML = "Invalid Mobile Number";
+                document.getElementById("msg").setAttribute("style", "color: #f51919;")
+            }
+        }
+    </script>
+    <style>
+        .form-control{
+            display: block;
+            color: #495760;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+        .form-control:focus{
+            color: #495057;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+        }
+        .form-control.is-valid{
+            border-color: #28a745;
+        }
+        .form-control.is-valid:focus{
+            border-color: #28a745;
+            box-shadow: 0 0 0 .2rem rgba(38, 202, 77, 0.63);
+        }
+        .form-control.is-invalid{
+            border-color: #f51919;
+        }
+        .form-control.is-invalid:focus{
+            border-color: #f51919;
+            box-shadow: 0 0 0 .2rem rgba(247, 51, 51, 0.719);
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="number" id="num" name="num" placeholder="Enter Mobile Number" class="form-control" onkeyup="check_number();">
+        <br>
+        <span id="msg"></span>
+    </form>
+</body>
+</html>

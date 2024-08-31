@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <p id="d1"></p>
+    <p id="d2"></p>
+    <p id="d3"></p>
+    <script>
+        const names = ["Harsh", "Muskaan", "DeepRaj"];
+
+        console.log(names[0]);
+        
+        var text = "<ol>";
+        for (let i=0; i<names.length; i++){
+            text+= "<li>" + names[i] + "</li>";
+        }
+        text+="</ol>";
+
+        document.getElementById("d1").innerHTML = text;
+
+        names[5] = "Rudra";
+
+        console.log(names);
+
+        document.getElementById("d2").innerHTML = names;
+
+        names.push("Atharva");
+
+        document.getElementById("d2").innerHTML += names;
+
+        // ForEach Loop
+        // array/string/object.forEach(element => {
+        // code})
+
+        var text = "<ul>";
+        names.forEach(element => {
+            text+= "<li>" + element + "</li>";
+        })
+        text += "</ul>";
+
+        document.getElementById("d3").innerHTML = text;
+
+        // For In Loop
+        // for (var in array/object/string) -- incase of array and string - variable will have access to index number -- incase of object - variable will have access to key
+        for (let x in names){
+            // text+= "<li>" + names[x] + "</li>";
+            text+= "<li>" + names.at(x)+ "</li>";
+        }
+
+        document.getElementById("d3").innerHTML = text;
+
+    </script>
+</body>
+</html>
