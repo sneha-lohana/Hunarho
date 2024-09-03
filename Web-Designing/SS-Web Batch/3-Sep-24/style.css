@@ -1,0 +1,17 @@
+/* Attribute Selector 
+<opentag attribute = ""></closetag>
+*/
+input[type]{
+    background-color: aquamarine;
+}
+input[type="submit"]{
+    width: 60px;
+    height: 30px;
+    background-color: greenyellow;
+}
+
+/* Universal Attribute */
+*{
+    font-family: monotype corsiva;
+    background-color: wheat;
+}

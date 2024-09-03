@@ -91,6 +91,46 @@ nav ul li a:hover:after{
 p{
     font-size: 30px;
 }
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    position: relative;
+}
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+    font-size: 22px;
+}
+.tab-contents ul li span{
+    color: #ff004f;
+    font-size: 28px;
+}
+.tab-links::after{
+    content:"";
+    width: 0%;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left:0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.tab-active{
+    display: block;
+}
+
 #services{
     padding: 30px 0;
 }
@@ -247,4 +287,58 @@ html{
     position: fixed;
     top:0;
     width: 100%;
+}
+
+#msg{
+    color: #2ffd6d;
+    font-size: 28px;
+    margin-top: 10px;
+    display: block;
+}
+nav .fas{
+    display: none;
+}
+@media only screen and (max-width: 600px){
+    header{
+        background-image: url("images/background-wp-sneha2-mobile.jpg");
+    }
+    .header-text{
+        margin-top: 70%;
+        font-size: 22px;
+    }
+    .header-text h1{
+        font-size: 35px;
+    }
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+    nav .fas{
+        display: block;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+    .subtitle{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2, .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
 }

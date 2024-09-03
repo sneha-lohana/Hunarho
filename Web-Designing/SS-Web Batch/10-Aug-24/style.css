@@ -1,0 +1,172 @@
+.grad{
+    height: 1000px;
+    width: 100%;
+    /* background-image: linear-gradient(to bottom right, red, yellow); */
+    /* to bottom
+    to top
+    to left
+    to right 
+    
+    diagonal
+    to bottom right
+    to bottom left
+    to top right
+    to top left
+    */
+    /* background-image: linear-gradient(to bottom right, red, pink, yellow); */
+    background-image: radial-gradient(red, orange);
+}
+
+.trans{
+    background-color: red;
+    color: wheat;
+    margin: 100px auto;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+
+    transition: transform;
+    transition-duration: 1s;
+    transition-delay: 0.25s;
+}
+.trans:hover{
+    /* transform: scale(2); */
+    /* transform: rotateY(360deg); */
+    transform: translateX(-70px);
+}
+.wrap{
+    margin: 50px;
+}
+.container{
+    width: 150px;
+    display: inline-block;
+}
+h1{
+    color: gray;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 200;
+}
+.box{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 50px auto;
+
+    .wrap:hover & {
+        transform: scale(3);
+    }
+}
+.box1{
+    background-color: aquamarine;
+}
+.box2{
+    background-color: rgb(95, 170, 145);
+    transition-property: transform;
+    transition-duration: 0.2s;
+}
+.box3{
+    background-color: rgb(56, 109, 91);
+    transition-property: transform;
+    transition-duration: 5s;
+}
+.anim{
+    background-color: red;
+    color: wheat;
+    margin: 10px ;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    animation-name: myanimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+@keyframes myanimation{
+    from{
+        background-color: red;
+        font-size: 10px;
+        left: 0px;
+    }
+    to{
+        background-color: rgb(4, 0, 255);
+        font-size: 35px;
+        left:1200px;
+    }
+}
+
+.anim1{
+    margin: 100px auto;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: aqua;
+    color: blueviolet;
+    font-size: 20px;
+    animation-name: myanim;
+    animation-duration: 14s;
+    animation-iteration-count: 5;
+}
+
+@keyframes myanim{
+    0%{
+        background-color: aqua;
+        color: blueviolet;
+        font-size: 20px;
+    }
+    25%{
+        background-color: green;
+        color: greenyellow;
+        font-size: 20px;
+    }
+    50%{
+        background-color: blue;
+        color: white;
+        font-size: 20px;
+    }
+    75%{
+        background-color: brown;
+        color: white;
+        font-size: 20px;
+    }
+    100%{
+    background-color: red;
+        color: goldenrod;
+        font-size: 20px;}
+}
+
+#mediabox{
+    height: 250px;
+    border-style: solid;
+    display: inline-block;
+    box-sizing: border-box;
+}
+/* 
+@media only mediatype (all | print | screen) and (media feature) and (media feature) 
+
+max-width, min-width, orientation, height, width, max-height, min-heigth
+    
+} */
+ .col4{
+    width: 24%;
+ }
+
+ @media only screen and (max-width:500px){
+    .col4{
+        width: 100%;
+     }
+ }
+
+ @media only screen and (max-width:800px){
+    .col4{
+        width: 48%;
+     }
+ }

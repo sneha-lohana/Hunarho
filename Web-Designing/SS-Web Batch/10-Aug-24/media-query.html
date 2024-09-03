@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query Part 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <picture>
+        <source media="(max-width:400px)" srcset="images/Lotus-150PX.jpg">
+        <source media="(max-width:700px)" srcset="images/lotus1.jpg">
+        <img src="images/lotus.jpg" alt="">
+    </picture>
+
+    <hr>
+    <div id="mediabox" class="col4">Box 1</div>
+    <div id="mediabox" class="col4">Box 2</div>
+    <div id="mediabox" class="col4">Box 3</div>
+    <div id="mediabox" class="col4">Box 4</div>
+</body>
+</html>

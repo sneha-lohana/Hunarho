@@ -15,13 +15,15 @@
         <div class="container">
             <nav class="sticky">
                 <img src="images/logo-sl1.png" alt="Logo" class="logo">
-                <ul>
+                <ul id="sidemenu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Web Developer</p>
@@ -39,6 +41,43 @@
                     <div class="about-col-2">
                         <h2 class="subtitle">About Me</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quisquam ducimus nesciunt molestias amet veniam, eius odio magnam, dolorum dolore aperiam. Debitis architecto esse, suscipit iusto eligendi aut magnam? Ipsum!</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents tab-active" id="skills"> <!-- Tab Content for Skills-->
+                            <ul>
+                                <li>
+                                    <span>Database</span><br>
+                                    MySQL, PostgreSQL, MS SQL Server
+                                </li>
+                                <li>
+                                    <span>Web Technologies</span><br>
+                                    HTML5, CSS3, JavaScript, Bootstarp
+                                </li>
+                                <li>
+                                    <span>Programming Language</span><br>
+                                    Python, C#, VB
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience"> <!-- Tab Content for Experience-->
+                            <ul>
+                                <li>
+                                    <span>2024 - Current</span><br>
+                                    Hunarho Learning Solutions Pvt. Ltd.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education"> <!-- Tab Content for Education-->
+                            <ul>
+                                <li>
+                                    <span>2023</span><br>
+                                    Post Graduate in Master in Computer Application
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,12 +149,14 @@
                         <a href="images/resume.pdf" download class="btn">Download Resume</a>
                     </div>
                     <div class="contact-right">
-                        <form>
-                            <input type="text" placeholder="Name" id="name" required>
-                            <input type="text" placeholder="Email" id="email" required>
+                        <form name="submit-to-google-sheet">
+                            <input type="text" placeholder="Name" name="Name" id="name" required>
+                            <input type="text" placeholder="Email" name="Email" id="email" required oninput="validateEmail()">
+                            <span id="emailFeedback" style="color: red;"></span>
                             <textarea name="message" id="message" placeholder="Message" required></textarea>
                             <button class="btn">Submit</button>
                         </form>
+                        <span id="msg"></span>
                     </div>
                 </div>
             </div>
@@ -126,5 +167,53 @@
             <p>&copy; &nbsp;2024 Sam. Made with <i class="fa-solid fa-heart-pulse"></i> by Developer</p>
         </div>
     </footer>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("tab-active");
+            }
+
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("tab-active");
+        }
+
+        function validateEmail(){
+            var regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            if (regEmail.test(document.getElementById("email").value)){
+                document.getElementById("emailFeedback").textContent = "";
+            }else{
+                document.getElementById("emailFeedback").textContent = "Invalid Email Id";
+            }
+        }
+
+        function openmenu(){
+            document.getElementById("sidemenu").style.right = "0px";
+        }
+        function closemenu(){
+            document.getElementById("sidemenu").style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzcslbzZrZdPRuccZRAVWN3DheFyUL5dMUqCdgzvHElgATUa4ZMfmxc91_vSGL2h_l_eg/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                document.getElementById("msg").innerHTML = "Message has been sent successfully."
+                setTimeout(function(){document.getElementById("msg").innerHTML=""}, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 </html>
