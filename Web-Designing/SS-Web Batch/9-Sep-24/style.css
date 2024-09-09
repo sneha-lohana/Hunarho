@@ -1,0 +1,129 @@
+img{
+    float: left;
+}
+
+#box1{
+    width: 60%;
+    border-style: solid;
+    float: left;
+}
+#box2{
+    border-style: solid;
+    width: 30%;
+    float: right;
+}
+#box3{
+    border-style: solid;
+    clear: both;
+}
+
+/* Float: float over the text
+left | right
+
+
+Clear Float - to remove the floating property we use clear
+clear: left | right | both
+*/
+
+/* Gradient Property 
+    linear-gradient(direction, colour1, color2, ....., colorN)
+
+    default value of direction - top to bottom
+    direction: to bottom - (top to bottom)
+                to top - (bottom to top)
+                to left - (right to left)
+                to right - (left to right)
+                to bottom right (from top left to bottom right)
+                to bottom left (from top right to bottom left)
+                to top right(from bottom left to top right)
+                to top left(from bottom right to top left)
+
+    radial-gradient(col1, col2 .... colN)
+*/
+
+.grad{
+    /* background-color: antiquewhite; */
+    /* background-image: linear-gradient(to bottom right, red, yellow); */
+    background-image: radial-gradient(aqua, green);
+    background-position: 100%;
+    background-repeat: no-repeat;
+}
+.trans{
+    width: 200px;
+    height: 150px;
+    background-color: chartreuse;
+    color: goldenrod;
+    text-align: center;
+    margin: auto;
+    border-radius: 7px;
+
+    /* Transition:     Control the transformation */
+    /* transition-property: transform;
+    transition-duration: 2s;
+    transition-delay: 0.2s; */
+    /* transition-behavior: ease in ease out; */
+
+    /* transition-property: background-color; */
+    transition-property: all;
+    transition-duration: 5s;
+}
+.trans:hover{
+    /* transform: translateY(npx) - for vertical movement
+                                    positive px will give downward movement
+                                    negative px will give upward movement
+                                    
+                translateX(npx) - for horizontal movement
+                                    positive px will move right
+                                    negative px will move left
+
+                translate(npx, npx) - for diagonal movement
+
+                rotateX(degree)
+                rotateY(degree)
+                rotate(degree, degree)
+                                    */
+    /* transform: translateX(-30px); */
+    /* transform: translate(-30px, -30px); */
+    transform: rotateY(350deg);
+    background-color: darkorange;
+}
+
+.wrap{
+    margin: 50px
+}
+.container{
+    display: inline-block;
+    width: 150px
+}
+h1{
+    color: lightslategray;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    padding: 20px;
+    text-align: center;
+}
+.circle{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 50px auto;
+
+    .wrap:hover & {
+        transform: scale(3);
+    }
+}
+
+.c1{
+    background: #60d4c8;
+}
+.c2{
+    background: #46baaf;
+    transition-property: transform;
+    transition-duration: 2s;
+}
+.c3{
+    background: #3ea69b;
+    transition-property: transform;
+    transition-duration: 7s;
+}
