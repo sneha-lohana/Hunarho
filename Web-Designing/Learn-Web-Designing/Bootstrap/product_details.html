@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $(".slider").bxSlider({
+          auto: true,
+          mode: "horizontal",
+          keyboardEnabled: true, 
+          speed: 1000
+        });
+      });
+    </script>
     <title>Ecomm|Home</title>
 </head>
 <body>
@@ -60,7 +74,20 @@
       <!-- Start of Main Content -->
       <section class="row mt-5 mx-auto">
         <div class="col-md-6">
-          <img src="assets/images/iphone.png" class="card-img-top" alt="Product1"  width="100%">
+          <div class="slider">
+            <div>
+              <img src="assets/images/iphone.png" class="card-img-top" alt="Product1"  width="100%" height="540px">
+            </div>
+            <div>
+              <img src="assets/images/iphone-1.png" class="card-img-top" alt="Product1"  width="100%">
+            </div>
+            <div>
+              <img src="assets/images/iphone-2.png" class="card-img-top" alt="Product1"  width="100%">
+            </div>
+            <div>
+              <img src="assets/images/iphone-3.png" class="card-img-top" alt="Product1"  width="100%">
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <p><strong>Product Name:</strong> Iphone 5</p>
@@ -68,9 +95,9 @@
           <p><strong>Product Details:</strong> Best in Market</p>
           <p><strong>Category:</strong> Mobile</p>
 
-          <a href="#" class="btn btn-danger">Add to Cart</a> &nbsp;
-          <a href="viewcart.html" class="btn btn-danger">View Cart</a> &nbsp;
-          <a href="index.html" class="btn btn-danger">Shop More</a>
+          <a href="#" class="btn btn-primary">Add to Cart</a> &nbsp;
+          <a href="cart.html" class="btn btn-primary">View Cart</a> &nbsp;
+          <a href="index.html" class="btn btn-primary">Shop More</a>
         </div>
       </section>
       <!-- End of Main Content -->
@@ -99,10 +126,10 @@
         <div class="col-md-4">
           <h5>Connect Us</h5>
           <hr>
-          <h3 class="social"><a href="www.facebook.com" target="_blank"><i class="bi bi-facebook text-danger"></i></a></h3>
-          <h3 class="social"><a href="www.twitter.com" target="_blank"><i class="bi bi-twitter text-danger"></i></a></h3>
-          <h3 class="social"><a href="www.instagram.com" target="_blank"><i class="bi bi-instagram text-danger"></i></a></h3>
-          <h3 class="social"><a href="www.linkedin.com" target="_blank"><i class="bi bi-linkedin text-danger"></i></a></h3>
+          <h3 class="social"><a href="www.facebook.com" target="_blank"><i class="bi bi-facebook text-primary"></i></a></h3>
+          <h3 class="social"><a href="www.twitter.com" target="_blank"><i class="bi bi-twitter text-primary"></i></a></h3>
+          <h3 class="social"><a href="www.instagram.com" target="_blank"><i class="bi bi-instagram text-primary"></i></a></h3>
+          <h3 class="social"><a href="www.linkedin.com" target="_blank"><i class="bi bi-linkedin text-primary"></i></a></h3>
         </div>
       </div>
    </footer>
