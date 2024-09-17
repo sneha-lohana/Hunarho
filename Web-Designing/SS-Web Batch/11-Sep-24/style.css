@@ -1,0 +1,151 @@
+/* Animation Property will enable us to make a HTML element gradually change from one form to another form
+
+We need to define Keyframe rules
+
+@keyframes animation_name{
+    from{
+        property: value,
+    }
+    to{
+        property: value,
+    }
+}
+
+How to apply the animation
+
+animation-name: animation_name
+to allow transition we animation-duration: Ns
+
+s stands seconds
+
+What if we want to repeat the animation
+animation-iteration-count: Number | infinite
+
+*/
+
+.anim{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    color: wheat;
+    text-align: center;
+    position: relative;
+    animation-name: myanim;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes myanim {
+    from{
+        background-color: red;
+    }
+    to{
+        background-color: green;
+    }
+}
+
+.anim_multiple{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    color: wheat;
+    text-align: center;
+    position: relative;
+    animation-name: multiple_colours;
+    animation-duration: 15s;
+    animation-iteration-count: 10;
+}
+
+@keyframes multiple_colours {
+    /* 0%{}
+    25%{}
+    */
+    0%{
+        background-color: red;
+    }
+    25%{
+        background-color: yellow;
+    }
+    50%{
+        background-color: blue;
+    }
+    75%{
+        background-color: green;
+    }
+    100%{
+        background-color: pink;
+    }
+}
+
+.move_anim{
+    display: inline;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    font-style: italic;
+    color: chartreuse;
+    background-color: black;
+    
+    animation-name: move_text;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+.move_anim1{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    color: wheat;
+    text-align: center;
+    position: relative;
+
+    animation-name: move_text;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move_text {
+    from{
+        right:-100%;
+    }
+    /* to{
+        left: 500px;
+    } */
+    to{
+        right:0px;
+    }
+}
+.demo{
+    height: 800px;
+    background-image: url(images/galaxy.jpg);
+    background-repeat: no-repeat;
+}
+#media-box{
+    height: 300px;
+    border-style: solid;
+    float: left;
+    box-sizing: border-box;
+}
+/* col - full screen - width 25%
+screen is 800px or less -  width 50%
+*/
+.col{
+    width: 25%;
+}
+/* if the screen size is 700px and above background image - galaxy 
+if it is less then background image should be whatsapp logo
+@media only screen and (min-width|max-width: npx){
+selector{
+property:value;
+}
+}
+*/
+@media only screen and (max-width:800px){
+    .demo{
+        background-image: url(images/whatsApp.jpeg);
+    }
+    .col{
+        width: 50%;
+    }
+}
+

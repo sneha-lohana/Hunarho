@@ -1,0 +1,36 @@
+<!-- 
+HTML we have 4 types of layouts
+1. Static Layout: Dimensions of the website are fixed. height | width - px
+2. Fluid Layout: any dimensions mentioned in percentage
+3. Adaptive Layout: In this layout the dimension are mentioned in pixel. But there are different layout of website view designed in CSS that get applied on certail screensize threshold value.
+
+The pixel value at which one layout gets changed to another layout is called the breakpoint
+
+4. Responsive = Adaptive + Fluid
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Demo of Media Query in HTML Elements</h1>
+    <picture>
+        <source media="(max-width: 750px)" srcset="images/whatsApp.jpeg">
+        <source media="(max-width: 900px)" srcset="images/galaxy.jpeg">
+        <img src="images/lotus.png" alt="Lotus">
+    </picture>
+
+    <h1>Demo of Media Query using CSS</h1>
+    <div class="demo"></div>
+
+    <h1>E-Commerce website Demo</h1>
+    <div id="media-box" class="col">Box 1</div>
+    <div id="media-box" class="col">Box 2</div>
+    <div id="media-box" class="col">Box 3</div>
+    <div id="media-box" class="col">Box 4</div>
+</body>
+</html>
