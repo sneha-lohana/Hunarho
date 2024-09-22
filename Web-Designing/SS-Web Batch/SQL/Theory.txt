@@ -1,0 +1,304 @@
+What is Database?
+
+DB is a collection of data. 
+Access
+Modify
+Delete
+
+What is Data?
+Information is stored in form of 
+1. Text
+2. Numbers
+3. Images
+4. Videos
+5. Documents - docx, excel, txt, csv
+
+History of Database
+1. Text files - Flat Database
+2. Structured Database - Excel
+        Data Repeatition - Data Redundancy
+3. Relational Database
+
+
+Relational Database Management System - MySQL
+
+Rules:
+Edgar F. Codd
+14 EF Codd Rules
+
+1. Relation - Table
+2. Attribute - Column Names (Homogeneous - similar data)
+3. Tuple - a row in table or record in relation
+4. Relationship
+    -> One to One - Aadhar Card, PAN Card, Passport
+    -> One to Many - Bank Account, Courses, Gmail Account, Degrees
+    -> Many to Many - Course to Teacher, Teacher to Student, Teacher to Classes
+5. Keys
+    -> Simple Key - a single Attribute
+    -> Composite Key - when two or more columns are combined to create a key.
+    -> Candidate Key - any column that is proposed to be a primary key is called as candidate key.
+        => Unique 
+        => It can't be null (empty)
+    -> Primary Key - is a unique identifier of a tuple.
+    -> Unique Key - no value can be repeated but it can have null (empty) value.
+    -> Foreign Key - any column that allows me to create a relationship between two tables.
+    -> Semantic or Natural Key
+        Maharashtra MH
+        Gujurat GJ
+    -> Technical or Surrogate or Artifical Key - When a table doesn't have any columns that can be identified as primary another unique column is added for the same purpose
+
+Data Normalization
+1st NF
+2nd NF
+3rd NF
+BCNF
+5th NF
+Denormalization
+
+SQL - Structured Query Language
+
+SEQUEL
+
+1. Retrieving Data
+2. Insert, Update, Delete Data
+3. Create, Modify, Drop and Truncate tables and databases
+4. Grant access 
+
+
+Types of SQL Statements:
+1. DDL - Data Definition Language
+Create, Modify or Delete the schema of the Database, - Database, Tables, View, Indexes etc
+
+CREATE, ALTER, DROP, TRUNCATE
+
+2. DML - Data Manipulation Language
+Allows to modify information or data inside the table
+
+INSERT, UPDATE, DELETE
+
+3. DQL - Data Query Language
+
+SELECT, SHOW
+
+4. DCL / TCL - Data Control Language / Transaction Control Language
+
+GRANT, REVOKE
+
+COMMIT, REVOKE, SAVEPOINT
+
+
+1. SQL is not case sensitive
+2. End every query with a semicolon ;
+3. Error reading is difficult
+
+
+********************** MySQL Command*************************
+Installation is done properly
+
+        mysql -version
+
+Starting mysql prompt
+
+        mysql -h localhost -u root -p
+
+mysql - keyword to start mysql
+-h host
+localhost - hostname
+-u user
+root - username
+-p password
+
+**************** SQL Query to Check Version *******************
+
+SELECT VERSION();
+
+****************DDL - Database Creation and Checking and Selection******************
+
+Creating a database
+CREATE DATABASE database_name;
+
+CREATE DATABASE full_stack_demo;
+
+Check the exisiting databases
+SHOW DATABASES;
+
+Select a database to work on it
+USE database_name;
+
+USE hunarho_db;
+
+Check exisiting tables in the database
+
+SHOW TABLES;
+
+
+******************** 22-Sep-24 *******************************
+Create 2 different databases.
+1. test_db
+2. full_stack_db
+
+How to delete a database
+
+DROP DATABASE database_name;
+
+******** CREATE A TABLE **************
+CREATE TABLE table_name(
+    column_name data_types [constraints],
+
+);
+
+What is datatype?
+Every values stored is in some form that is datatype
+
+Types of datatypes in SQL
+1. Numbers
+    INT - 4 bytes - Pincode 
+    1 byte = 8 bits
+    4210
+
+    TINYINT - 1 byte 
+
+2. String / Character
+3. Date
+
+*** Create a student table - StudeID, name *****
+CREATE TABLE student(
+    studID INT,
+    name VARCHAR(50)
+);
+
+*** checking existing tables ****
+
+SHOW TABLES;
+
+*** Check the schema of the table ***
+
+DESC table_name;
+
+DESCRIBE table_name;
+
+*** Create a table Employee ***
+EmpID - int primary key auto increment
+EmpName not null
+Email - unique
+Mobile - unique
+city with defaulf Mumbai
+DOB
+DOJ
+Salary
+
+CREATE TABLE employee_master(
+    empId int primary key AUTO_INCREMENT,
+    empName varchar(100) NOT NULL,
+    email text,
+    mobile char(10) UNIQUE,
+    city varchar(50) DEFAULT 'Mumbai',
+    DOB date,
+    DOJ date NOT NULL,
+    Salary decimal(10, 2) 
+);
+
+Naming Convension Tables:
+Master Table - Employee, Student, Course
+Transaction Table - Fees_Collection, Attendace, Salary,
+Log Tables - Modification , deletion and errors
+
+
+*** users_master ***
+name
+gender  enum
+Hobbies set
+skills set
+
+CREATE TABLE users_master(
+    id int primary key AUTO_INCREMENT,
+    name varchar(100) not null,
+    gender enum("Male", "Female", "Trans"),
+    skills SET('Java', 'HTML', 'SQL', 'Python')
+);
+
+**** Foreign Key constraint ******
+books_master
+bookid
+bookname
+author
+price
+
+column_name data_type  Foreign Key REFERENCES table_name(column_name)
+
+
+CREATE TABLE books_master(
+    bookid int primary key AUTO_INCREMENT,
+    bookname varchar(100),
+    price double(8,2),
+    author int Foreign key REFERENCES users_master(id)
+);
+
+CREATE TABLE books_master(
+    bookid int primary key AUTO_INCREMENT,
+    bookname varchar(100),
+    price double(8,2),
+    author int,
+    Foreign key(author) REFERENCES users_master(id)
+);
+
+CREATE TABLE Part_Order(
+    OrderNo int,
+    Item varchar(20),
+    qty int,
+    Primary Key(OrderNo, Item)
+);
+
+******************* Alter Table Command ********************
+1. Add a new column
+ALTER TABLE table_name ADD Column column_name data_type;
+
+ALTER TABLE student ADD COLUMN mobile varchar(10);
+2. Add a constraint
+
+ALTER TABLE table_name ADD constraint constraint_name (Primary Key|Unique|Default|NOT NULL) (column_name);
+ALTER TABLE table_name ADD constraint constraint_name Foreign KEY (column_name) REFERENCES table_name(column_name);
+
+ALTER TABLE student ADD CONSTRAINT PRIMARY KEY(studID);
+
+3. Add AUTO_INCREMENT 4. Modify the datatype 5. Modify the column_name
+ALTER TABLE table_name CHANGE COLUMN old_column_name new_column_name data_type [constraint] [AUTO_INCREMENT]
+
+ALTER TABLE student CHANGE COLUMN studID studID int AUTO_INCREMENT;
+
+6. Drop a column
+
+ALTER TABLE table_name DROP COLUMN column_name;
+
+ ALTER TABLE student ADD COLUMN test int;
+ ALTER TABLE student DROP COLUMN test;
+
+7. Drop a constraint
+ALTER TABLE table_name DROP CONSTRAINT constraint_name;
+
+SHOW CREATE TABLE table_name;
+
+SHOW CREATE TABLE books_master;
+ALTER TABLE books_master DROP CONSTRAINT books_master_ibfk_1;
+
+8. Rename a table
+ALTER TABLE table_name RENAME TO new_table_name;
+
+ALTER TABLE student RENAME TO student_master;
+
+CHECK TABLE table_name;
+
+CHECK TABLE student;
+CHECK TABLE student_master;
+
+********** DROP Statement ***********
+
+DROP TABLE table_name;
+
+************* DQL *************
+CREATE DATABASE sample_sales_db;
+
+USE sample_sales_db;
+
+tiny.cc/SampleDB
+
