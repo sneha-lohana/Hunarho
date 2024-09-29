@@ -19,7 +19,6 @@ History of Database
         Data Repeatition - Data Redundancy
 3. Relational Database
 
-
 Relational Database Management System - MySQL
 
 Rules:
@@ -56,14 +55,11 @@ BCNF
 Denormalization
 
 SQL - Structured Query Language
-
 SEQUEL
-
 1. Retrieving Data
 2. Insert, Update, Delete Data
 3. Create, Modify, Drop and Truncate tables and databases
 4. Grant access 
-
 
 Types of SQL Statements:
 1. DDL - Data Definition Language
@@ -73,33 +69,27 @@ CREATE, ALTER, DROP, TRUNCATE
 
 2. DML - Data Manipulation Language
 Allows to modify information or data inside the table
-
 INSERT, UPDATE, DELETE
 
 3. DQL - Data Query Language
-
 SELECT, SHOW
 
 4. DCL / TCL - Data Control Language / Transaction Control Language
-
 GRANT, REVOKE
-
 COMMIT, REVOKE, SAVEPOINT
-
 
 1. SQL is not case sensitive
 2. End every query with a semicolon ;
 3. Error reading is difficult
 
-
 ********************** MySQL Command*************************
 Installation is done properly
 
-        mysql -version
+    mysql -version
 
 Starting mysql prompt
 
-        mysql -h localhost -u root -p
+    mysql -h localhost -u root -p
 
 mysql - keyword to start mysql
 -h host
@@ -116,7 +106,6 @@ SELECT VERSION();
 
 Creating a database
 CREATE DATABASE database_name;
-
 CREATE DATABASE full_stack_demo;
 
 Check the exisiting databases
@@ -124,13 +113,10 @@ SHOW DATABASES;
 
 Select a database to work on it
 USE database_name;
-
 USE hunarho_db;
 
 Check exisiting tables in the database
-
 SHOW TABLES;
-
 
 ******************** 22-Sep-24 *******************************
 Create 2 different databases.
@@ -138,13 +124,11 @@ Create 2 different databases.
 2. full_stack_db
 
 How to delete a database
-
 DROP DATABASE database_name;
 
 ******** CREATE A TABLE **************
 CREATE TABLE table_name(
     column_name data_types [constraints],
-
 );
 
 What is datatype?
@@ -174,7 +158,6 @@ SHOW TABLES;
 *** Check the schema of the table ***
 
 DESC table_name;
-
 DESCRIBE table_name;
 
 *** Create a table Employee ***
@@ -203,7 +186,6 @@ Master Table - Employee, Student, Course
 Transaction Table - Fees_Collection, Attendace, Salary,
 Log Tables - Modification , deletion and errors
 
-
 *** users_master ***
 name
 gender  enum
@@ -225,7 +207,6 @@ author
 price
 
 column_name data_type  Foreign Key REFERENCES table_name(column_name)
-
 
 CREATE TABLE books_master(
     bookid int primary key AUTO_INCREMENT,
@@ -254,8 +235,8 @@ CREATE TABLE Part_Order(
 ALTER TABLE table_name ADD Column column_name data_type;
 
 ALTER TABLE student ADD COLUMN mobile varchar(10);
-2. Add a constraint
 
+2. Add a constraint
 ALTER TABLE table_name ADD constraint constraint_name (Primary Key|Unique|Default|NOT NULL) (column_name);
 ALTER TABLE table_name ADD constraint constraint_name Foreign KEY (column_name) REFERENCES table_name(column_name);
 
@@ -267,11 +248,10 @@ ALTER TABLE table_name CHANGE COLUMN old_column_name new_column_name data_type [
 ALTER TABLE student CHANGE COLUMN studID studID int AUTO_INCREMENT;
 
 6. Drop a column
-
 ALTER TABLE table_name DROP COLUMN column_name;
 
- ALTER TABLE student ADD COLUMN test int;
- ALTER TABLE student DROP COLUMN test;
+ALTER TABLE student ADD COLUMN test int;
+ALTER TABLE student DROP COLUMN test;
 
 7. Drop a constraint
 ALTER TABLE table_name DROP CONSTRAINT constraint_name;
@@ -299,6 +279,218 @@ DROP TABLE table_name;
 CREATE DATABASE sample_sales_db;
 
 USE sample_sales_db;
-
 tiny.cc/SampleDB
 
+*********** DML *********************
+Data Manipulation Language
+
+1. Insert a single record / tuple in the table
+INSERT INTO table_name (column_names) VALUES (value_list);
+
+    INSERT INTO student_master VALUES (1, "DeepRaj", "9810234567");
+
+Check the inserted data
+    SELECT * FROM student_master;
+
+2. Insert data into specific columns
+
+    INSERT INTO student_master (name, mobile) VALUES ("Praful",  "5688932423");
+
+3. Insert Multiple Values
+INSERT INTO table_name (column_names) VALUES (value_list), (value_list);
+
+    INSERT INTO student_master (name, mobile) VALUES
+("Atharva", "9876543210"),
+("Harsh", "1234567890"),
+("Muskan", "9876542903");
+
+4. Inserting data into enum column
+    INSERT INTO users_master (name, gender) VALUES ('Atharva', 'M');
+
+    INSERT INTO users_master (name, gender) VALUES ('Atharva', 'Male');
+
+5. Inserting data into a set
+
+    INSERT INTO users_master (name, skills) VALUES ('DeepRaj', 'HTML', 'SQL');
+
+    INSERT INTO users_master (name, skills) VALUES ('DeepRaj', 'HTML, SQL');
+
+    INSERT INTO users_master (name, skills) VALUES ('DeepRaj', 'HTML,SQL');
+
+    INSERT INTO users_master (name, skills) VALUES ('DeepRaj', 'HTML,SQL,C#'); 
+
+6. Insert into Enum and set
+    INSERT INTO users_master (name, gender, skills) VALUES ('Praful', 'Male', 'Python,SQL');
+
+UPDATE Statement
+
+UPDATE table_name SET column_name = value, column_name=value;
+
+    UPDATE users_master SET skills = 'Python,SQL,HTML';
+
+Update specific records
+UPDATE table_name SET column_name=value
+WHERE condition (column_name comparision_operator value);
+
+    UPDATE users_master SET gender = "Male" WHERE id=3;
+
+
+DELETE Statement
+
+DELETE FROM table_name WHERE condition;
+
+TRUNCATE
+
+CREATE TABLE users_master_dup1(
+    id int primary key AUTO_INCREMENT,
+    name varchar(100) not null,
+    gender enum("Male", "Female", "Trans"),
+    skills SET('Java', 'HTML', 'SQL', 'Python')
+);
+
+    INSERT INTO table_name  SELECT * from table_name;
+
+INSERT INTO users_master_dup SELECT * FROM users_master;
+
+    DELETE FROM users_master_dup;
+    TRUNCATE users_master_dup1;
+
+** Create table and insert data
+
+CREATE TABLE stud AS SELECT * FROM student_master;
+
+********************* Data Query Language ********************************
+
+Display all rows and columns in the table:
+    SELECT * FROM employees;
+
+Display employeeNumber, LastName, FirstName, jobTitle
+    SELECT employeeNumber, lastName, firstName, jobTitle FROM employees;
+
+=== Arithmetic Operator and Renaming the column ===
+Display employeeNumber, fullname, jobTitle
+    SELECT employeeNumber, firstName + " " + lastName AS "Full Name", jobTitle
+    FROM employees;
+
+    SELECT employeeNumber, CONCAT(firstName, " ", lastName) Full_Name, jobTitle
+    FROM employees;
+
+Display ProductCode, ProductName, BuyPrice and increase the buyPrice by 5%
+    SELECT productCode, ProductName, buyPrice, 
+    buyPrice + buyPrice * 0.05 "Increased BuyPrice"
+    FROM products;
+
+Increase the credit limit of all the customers by 10%.
+    SELECT customerNumber, customerName, creditLimit Old_CL, creditLimit + creditLimit * 0.1 New_CL FROM customers;
+
+=== Display Unique Values - DISTINCT
+
+Display all the unique Job Titles in the employees table. 
+    SELECT jobTitle from employees;
+
+    SELECT DISTINCT jobTitle from employees;
+
+Relational / comparision_operator WHERE Clause
+
+WHERE condition (column_name Operator value)
+
+Display all the customers whose credit limit is more than 70000. 
+    SELECT customerNumber, customerName, creditLimit
+    FROM customers
+    WHERE creditLimit > 70000;
+
+Display all the customers who are from New York City. 
+    SELECT customerNumber, customerName, addressline1, addressline2, city
+    FROM customers
+    WHERE city = "New York";
+
+    SELECT DISTINCT city from customers;
+
+    SELECT customerNumber, customerName, addressline1, addressline2, city
+    FROM customers
+    WHERE city = "NYC";
+
+List of Products that have stock more than 6000
+
+    SELECT productCode, ProductName, quantityInStock
+    FROm products
+    Where quantityInStock>6000;
+
+Display all employees who are sales Representative
+    SELECT employeeNumber, CONCAT(firstName, " ", lastName) name, jobTitle
+    FROM employees
+    WHERE jobTitle = "Sales Rep";
+
+== RANGE Operator (BETWEEN ... AND Operator)
+Display all customers who have a credit limit in range of 25000 to 50000. 
+    
+    SELECT customerNumber, customerName, creditLimit
+    FROM customers
+    WHERE creditLimit BETWEEN 25000 AND 50000;
+
+== Logical Operators - AND, OR, NOT
+Display all the employees who are Sales Representative or work in office number 6.
+
+    SELECT employeeNumber, firstName, jobTitle, officeCode
+    FROM employees
+    WHERE jobTitle="Sales Rep" OR officeCode=6;
+
+Display all sales rep who work in office 1
+
+    SELECT employeeNumber, firstName, lastName, jobTitle, officeCode
+    FROM employees
+    WHERE jobTitle="Sales Rep" AND officeCode=1;
+
+Display all the employees who are not Sales Representative.
+    SELECT employeeNumber, firstName, lastName, jobTitle
+    FROM employees
+    WHERE jobTitle != "Sales Rep";
+
+    SELECT employeeNumber, firstName, lastName, jobTitle, officeCode
+    FROM employees
+    WHERE NOT jobTitle="Sales Rep";
+
+List all the orders placed in month of Feb 2003
+
+    SELECT OrderNumber, orderDate, customerNumber
+    FROM orders
+    WHERE orderDate BETWEEN '2003-02-01' AND '2003-02-28';
+
+Display all customers who belong to NYC, Las Vegas, Frankfurt
+
+    SELECT customerName, city
+    FROM customers
+    WHERE city="NYC" or city="Las Vegas" or city="Frankfurt";
+
+=== IN Operator
+
+    SELECT customerName, city
+    FROM customers
+    WHERE city IN ("NYC", "Las Vegas", "Frankfurt");
+
+Display all the employees who work in office 1, 3, 5
+
+    SELECT firstName, officeCode
+    FROm employees
+    WHERE officeCode in (1, 3, 5);
+
+=== IS NULL Operator and IS NOT NULL Operator
+
+Display all the customers who don't have a Sales Rep. 
+
+    SELECT customerName, salesRepEmployeeNumber, city
+    FROM customers
+    WHERE salesRepEmployeeNumber IS NULL;
+
+    SELECT customerName, salesRepEmployeeNumber, city
+    FROM customers
+    WHERE salesRepEmployeeNumber IS NOT NULL;
+
+Display all the customers who don't have Sales Rep and belong to Singapore or Berlin
+    SELECT customerName, salesRepEmployeeNumber, city
+    FROM customers
+    WHERE salesRepEmployeeNumber IS NULL AND (city ="Singapore" OR city="Berlin");
+
+    SELECT customerName, salesRepEmployeeNumber, city
+    FROM customers
+    WHERE salesRepEmployeeNumber IS NULL AND city IN ("Singapore", "Berlin");
