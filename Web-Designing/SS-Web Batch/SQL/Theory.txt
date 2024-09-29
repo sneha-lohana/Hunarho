@@ -237,7 +237,7 @@ ALTER TABLE table_name ADD Column column_name data_type;
 ALTER TABLE student ADD COLUMN mobile varchar(10);
 
 2. Add a constraint
-ALTER TABLE table_name ADD constraint constraint_name (Primary Key|Unique|Default|NOT NULL) (column_name);
+ALTER TABLE table_name ADD constraint constraint_name (Primary Key ,Unique ,Default ,NOT NULL) (column_name);
 ALTER TABLE table_name ADD constraint constraint_name Foreign KEY (column_name) REFERENCES table_name(column_name);
 
 ALTER TABLE student ADD CONSTRAINT PRIMARY KEY(studID);
@@ -494,3 +494,203 @@ Display all the customers who don't have Sales Rep and belong to Singapore or Be
     SELECT customerName, salesRepEmployeeNumber, city
     FROM customers
     WHERE salesRepEmployeeNumber IS NULL AND city IN ("Singapore", "Berlin");
+
+===== Assignment 1 ======
+Display all the offices which have State value as NULL
+
+    SELECT * 
+    FROM offices
+    WHERE state IS NULL;
+
+Display all the products that have stock greater than 6000 in the product line of planes.
+
+    SELECT productCode, ProductName, quantityInStock, productline
+    FROM products
+    WHERE quantityInStock > 6000 AND productline = "Planes";
+
+Display all the orders for the titanic and the Queen Mary placed in the year 2003.
+
+    SELECT productCode, ProductName FROM products WHERE ProductName IN ("the titanic", "the Queen Mary");
+
+    SELECT productCode, orderNumber FROM OrderDetails
+    WHERE productCode in ("S700_3505", "S700_3962");
+
+    SELECT orderNumber, orderDate FROm orders WHERE orderNumber IN
+ (10105  ,
+ 10118  ,
+ 10129  ,
+ 10142  ,
+ 10153  ,
+ 10167  ,
+ 10177  ,
+ 10185  ,
+ 10197  ,
+ 10208  ,
+ 10222  ,
+ 10232  ,
+ 10248  ,
+ 10261  ,
+ 10273  ,
+ 10283  ,
+ 10295  ,
+ 10306  ,
+ 10315  ,
+ 10327  ,
+ 10337  ,
+ 10350  ,
+ 10360  ,
+ 10373  ,
+ 10386  ,
+ 10397  ,
+ 10414  ,
+ 10105  ,
+ 10117  ,
+ 10129  ,
+ 10142  ,
+ 10153  ,
+ 10167  ,
+ 10177  ,
+ 10185  ,
+ 10197  ,
+ 10208  ,
+ 10222  ,
+ 10232  ,
+ 10248  ,
+ 10261  ,
+ 10273  ,
+ 10283  ,
+ 10294  ,
+ 10306  ,
+ 10315  ,
+ 10327  ,
+ 10337  ,
+ 10350  ,
+ 10360  ,
+ 10373  ,
+ 10386  ,
+10397  ,
+ 10414 ) AND orderDate BETWEEN '2003-01-01' AND '2003-12-31';
+
+ ==== Subqueries
+
+    SELECT orderNumber, orderDate FROm orders WHERE orderNumber IN
+    (SELECT orderNumber FROm OrderDetails WHERE productCode IN (SELECT productCode FROM products WHERE ProductName IN ("the titanic", "the Queen Mary"))) AND year(orderDate) = 2003;
+
+Display all customers from USA & UK with creditLimit between 50000 and 100000
+
+    SELECT customerName, creditLimit, country
+    FROM customers
+    WHERE creditLimit BETWEEN 50000 AND 100000 AND country IN ('USA', 'UK');
+
+===== LIKE operator  -- % _
+Display all the customers that have Auto in their names.
+
+    SELECT customerName FROM customers WHERE customerName LIKE "%auto%";
+
+Display all the customerName that begin with Auto   
+    SELECT customerName FROM customers WHERE customerName LIKE "auto%";
+
+    SELECT customerName FROM customers WHERE customerName LIKE "%auto";
+
+    SELECT customerName FROM customers WHERE customerName LIKE "auto"; 
+    This above query is similar to customerName = "auto"
+
+Display customer names which have AUto in between neither at start or at end.
+    SELECT customerName FROM customers 
+    WHERE customerName LIKE "%auto%" AND customerName NOT LIKE "%auto" AND 
+    customerName NOT LIKE "auto%";
+
+Display all the employee name that end with "Y"
+    SELECT firstName FROM employees WHERE firstName LIKE "%y";
+
+Display all the employee name that are 6 Character long and start with "L" and end with "E"
+    SELECT firstName FROM employees WHERE firstName LIKE "l____e";
+
+Display customer names which have AUto in between neither at start or at end.
+    SELECT customerName FROM customers
+    WHERE customerName LIKE "%__auto__%";
+
+=== LIMIT
+Display the top 10 records of customer table
+    SELECT * from customers LIMIT 10;
+
+=== CASE... WHEN... THEN... ELSE ... END Statement
+SELECT col1, col2, CASE column_name WHEN experssion (value) THEN task/action
+WHEN experssion THEN action
+.
+.
+.
+ELSE
+action END,  
+
+Increase the cost of the products based on the productline as follows:
+    Motorcycle increase cost by $100
+    Trucks and Buses increase cost by $50
+    Trains increase cost by $20
+    and others increase cost bt $10
+
+    SELECT productCode, ProductName, productline, buyPrice, 
+    CASE productline 
+    WHEN "Motorcycles" THEN "Increase Price by $100"
+    WHEN "Trucks and Buses" THEN "Increase Price by $50"
+    WHEN "Trains" THEN "Increase Price by $20"
+    ELSE "Increase Price by $10" END as "Remarks",
+    CASE productline 
+    WHEN "Motorcycles" THEN buyPrice+100
+    WHEN "Trucks and Buses" THEN buyPrice+50
+    WHEN "Trains" THEN buyPrice+20
+    ELSE buyPrice+10 END as "new buyPrice"
+    FROM products
+    LIMIT 30;
+
+=== ORDER BY  column_name ASC | DESC, col2 ASC | DESC
+
+Display all the employees in alphabetic order of their lastName working in the office 1 and 6
+
+    SELECT firstName, lastName, officeCode FROM employees
+    WHERE officeCode IN (1, 6)
+    ORDER BY lastName;
+
+Display employee names lastName sorted in Ascending order and firstName sorted in descending order
+    SELECT firstName, lastName, officeCode FROM employees
+    ORDER BY lastName, firstName DESC;
+
+Display orders in descending order with following columns orderNumber, orderlineNumber and subtotal.
+
+    SELECT orderNumber, orderlineNumber, quantityOrdered * priceEach as subtotal
+    from OrderDetails
+    order by orderNumber desc, orderlineNumber;
+
+====== Assignment 2 =====
+Calculate the number of days required in the month of Aug 2004 to ship the products.
+
+    SELECT orderNumber, orderDate, shippedDate, shippedDate - orderDate "No of Shipping Days"
+    FROM orders
+    WHERE orderDate between '2004-08-01' and '2004-08-31';
+
+    SELECT orderNumber, orderDate, shippedDate, datediff(shippedDate, orderDate) "ShippingDays"
+    FROM orders
+    WHERE year(orderDate) = 2004 and month(orderDate) = 8;
+
+Display all the product names that don't end with "S"
+    select  ProductName from products where ProductName not like "%s";
+
+List all the names of the employees in descending order of their office numbers.
+    select firstName, officeCode from employees
+    order by officeCode, firstName desc;
+
+List the names, jobTitle and officecode of everyone whose name falls in the alphabetical range of "C" to "L"
+    select firstName, jobTitle, officeCode from employees
+    where firstName between 'C' and 'L' order by firstName;
+
+    select firstName, jobTitle, officeCode from employees
+    where firstName >= "C" and firstName <= "L" order by firstName;
+
+Draw back of the above 2 queries is it will include names C and L names
+
+    select firstName, jobTitle, officeCode from employees where firstName REGEXP '^[C-L].*$';
+
+Display all the employee name who name length is 5 Characters
+    select firstName, lastName from employees
+    where firstName like "_____" or lastName like "_____";
+
