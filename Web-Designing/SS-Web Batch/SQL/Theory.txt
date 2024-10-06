@@ -694,3 +694,195 @@ Display all the employee name who name length is 5 Characters
     select firstName, lastName from employees
     where firstName like "_____" or lastName like "_____";
 
+**************** Assignment ****************
+List the names, jobTitle and officecode of everyone whose name falls in the alphabetical range of "C" to "L"
+    select firstName, jobTitle, officeCode from employees
+    WHere firstName BETWEEN "C" and "L";
+
+    select firstName, jobTitle, officeCode from employees
+    WHERE firstName REGEXP '^[C-L].*$';
+
+    select firstName, jobTitle, officeCode from employees
+    WHERE firstName RLIKE '^[C-L].*$';
+
+    Starts with - ^
+    Ends with - $
+    [A-Z].5[0-9].4[A-Z].1
+    [0-9].*
+
+
+Display all the customers who has made payments more than 10000 at a time
+
+    SELECT DISTINCT customerNumber FROM payments
+    WHERE amount >= 10000;
+
+*Display all the customers handled by Pamela Castillo and Loui Bondur from France with creditLimit in range of 45000 to 80000
+
+SELECT customerName, country, creditLimit
+FROM customers
+WHERE creditLimit BETWEEN 45000 and 80000 AND country = "France" and salesRepEmployeeNumber IN (1337, 1401);
+
+Select  employeeNumber from employees where firstName in ('Pamela', 'Loui');
+
+SELECT customerName, country, creditLimit
+FROM customers
+WHERE creditLimit BETWEEN 45000 and 80000 AND country = "France" and salesRepEmployeeNumber IN (Select  employeeNumber from employees where firstName in ('Pamela', 'Loui'));
+
+
+Display customers who have ordered Planes.
+
+    SELECT customerNumber, customerName, country
+    FROM customers WHERE customerNumber IN (
+    Select DISTINCT customerNumber FROM orders WHERE orderNumber IN
+    (SELECT  DISTINCT OrderNumber FROM OrderDetails WHERE productCode IN
+    (select productCode From Products WHERE productline = "Planes")));
+
+
+Single row
+String Function:
+
+CONCAT - Join 2 or more strings
+
+    SELECT CONCAT(firstName, " ", lastName) as "Full Name" FROM employees;
+
+UPPER(String)
+
+    SELECT UPPER(firstName) FROM employees;
+    SELECT UPPER(CONCAT(firstName, " ", lastName)) as "Full Name" FROM employees;
+
+LOWER
+    SELECT LOWER(firstName) FROM employees;
+
+REPLACE (exp1, replace content, with exp)
+    SELECT REPLACE("Let us Learn", "Learn", "Earn");
+
+    SELECT REPLACE("Let us Learn. Learn, Learn so that you can earn earn", "Learn", "Earn");
+
+SUBSTR (string, from, number of places)
+    SELECT SUBSTR("Aggregate Function", 6, 4);
+    SELECT SUBSTR("Aggregate Function", -2, 4);
+    SELECT SUBSTR("Aggregate Function", -12, 4);
+    SELECT SUBSTR("Aggregate Function", -2.5, 4);
+    SELECT SUBSTR("Aggregate Function", -2.2, 4);
+
+length() CHAR_LENgth()
+
+    SELECT length('Sneha');
+    SELECT char_length('Sneha');
+
+Date Functions:
+
+SELECT CURDATE()
+
+SYSDATE()
+NOW()
+
+SELECT LAST_DAY('2024-03-01');
+SELECT last_day(now());
+
+date_format(date, format)
+
+%a - Sun - Sat
+%b, - Jan - dec
+%M - full string month
+%d - date
+%D - 1st to 31st
+%Y - Year
+%y - 2 digit year
+
+SELECT date_format(now(), "%a");
+
+06 Oct 2024, Sun
+
+SELECT date_format(now(), "%d %M %Y, %a");
+SELECT date_format(now(), "%d %b %Y, %a");
+SELECT date_format(now(), "%D %b %Y, %a");
+
+datediff(date1, date2);
+SELECT datediff('1990-01-01', Now());
+SELECT datediff(now(),'1990-01-01');
+
+select month(now());
+select year(now())
+
+Math Functions:
+comparision Functions
+    COALESCE(n values)
+    ISNULL(value)
+    greatest
+    least
+    if(condition, yesvalue, no value)
+
+Aggregate Functions/ Group function:
+    min()
+    max()
+    average() / avg()
+    count()
+    sum()
+
+    Check max payment received:
+    SELECT max(amount) from payments;
+
+    Check min payment received:
+    SELECT min(amount) from payments;
+
+    Check total payments received
+    SELECT sum(amount) from payments;
+
+    Check total payments received in the year 2003
+    SELECT sum(amount) from payments WHERE year(paymentDate) = 2003;
+
+    Check number of customers in USA
+    SELECT count(customerNumber) from customers WHERE country = "USA";
+
+    Check the mean of the payment amount
+    SELECT avg(amount) from payments;
+
+    GROUP BY clause
+    SELECT country, customerName from customers
+    order by country;
+
+    select country, count(customerName)
+    from customers
+    GROUP BY country
+    ORDER BY country;
+
+    select country, count(customerName)
+    from customers
+    GROUP BY country
+    ORDER BY count(customerName) desc;
+
+    GROUP BY clause can be applied to those columns which don't have a group/Aggregate function.
+
+************* Assignment **************
+* Display employees details as Sneha Lohana works as a trainer
+    SELECT CONCAT(firstName, " ", lastName, " works as a ", jobTitle) FROM employees;
+
+* Display annual payments received from customers
+    SELECT year(paymentDate), customerNumber, sum(amount)
+    FROM payments
+    GROUP BY year(paymentDate), customerNumber;
+
+* Display order table data where date should be display as 6th Oct 2024
+* Display city wise customer count
+    SELECT city, count(customerNumber) FROM customers
+    GROUP BY city;
+
+* Display city that has count more than 3
+    SELECT city, count(customerNumber) FROM customers
+    WHERE count(customerName) > 3
+    GROUP BY city;
+
+    HAVING clause
+
+    SELECT col, Aggregate(col)
+    FROm table_name
+    WHERE clause
+    GROUP BY clause HAVING clause
+    ORDER BY
+
+    SELECT city, count(customerNumber) FROM customers
+    GROUP BY city HAVING count(customerName)>3;
+    
+* Display product wise order amount
+* Find the customer with highest average orders
