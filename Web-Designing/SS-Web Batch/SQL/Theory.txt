@@ -1036,3 +1036,169 @@ JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
 SELECT e.firstName, o.city, c.customerName, c.city
 FROM employees e JOIN offices o USING (officeCode)
 JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
+
+Display customers from USA who have ordered Planes
+
+SELECT customerNumber, customerName, country FROM customers
+WHERE country = "USA" AND customerNumber IN
+(SELECT DISTINCT customerNumber FROM orders WHERE orderNumber IN
+(SELECT DISTINCT orderNumber FROM OrderDetails WHERE productCode IN
+(SELECT productCode FROm products WHERE productline = "Planes")));
+
+SELECT DISTINCT c.customerNumber, c.customerName, c.country
+FROM customers c, OrderDetails od, orders o, products p
+WHERE c.customerNumber = o.customerNumber AND o.orderNumber = od.orderNumber
+AND od.productCode = p.productCode AND c.country="USA" AND p.productline="Planes";
+
+SELECT DISTINCT c.customerNumber, c.customerName, c.country
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od ON (o.orderNumber = od.orderNumber)
+JOIN products p USING (productCode) 
+WHERE c.country = "USA" AND p.productline="Planes";
+
+Display customers who have ordered planes from USA and also their count of product ordered
+
+SELECT DISTINCT c.customerName, count(p.ProductName) as plane_count
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE c.country="USA" and p.productline="Planes"
+GROUP BY c.customerName
+ORDER BY count(p.ProductName) DESC;
+
+
+************* SELF JOIN **********************
+Display all the employee name and their reportng manager name
+
+SELECT CONCAT(e.firstName, " ", e.lastName) Employee, 
+CONCAT(m.firstName, " ", m.lastName) Manager
+FROM employees e JOIN employees m ON (m.employeeNumber = e.reportsTo);
+
+
+************** LEFT Outer Join ****************
+
+SELECT CONCAT(e.firstName, " ", e.lastName) Employee, 
+CONCAT(m.firstName, " ", m.lastName) Manager
+FROM employees e LEFT OUTER JOIN employees m ON (m.employeeNumber = e.reportsTo);
+
+Display all employees and their adjustent customers
+
+SELECT e.firstName, c.customerName
+FROM employees e LEFT JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
+
+************** right outer join ****************
+
+SELECT e.firstName, c.customerName
+FROM employees e right JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
+
+*************** CRoSS JOIN ***************
+
+SELECT e.firstName, c.customerName
+FROM customers c, employees e;
+
+SELECT e.firstName, c.customerName
+FROM customers c JOIN employees e;
+
+SELECT e.firstName, c.customerName
+FROM customers c CROSS JOIN employees e;
+
+******************** UNION and UNION ALL *****************
+
+SELECT firstName from employees
+UNION
+SELECT contactFirstName from customers;
+
+SELECT firstName from employees
+UNION ALL
+SELECT contactFirstName from customers;
+
+**************** SYNTAX **************
+
+SELECT column_list
+FROM table_name [JOIN | LEFT JOIN | LEFT OUTER JOIN | RIGHT JOIN | RIGHT OUTER JOIN | CROSS JOIN | SELF JOIN] table_name [ON | USING] (condition)
+WHERE clause
+GROUP BY clause
+HAVING clause
+ORDER BY clause;
+
+
+************************ Assignment ***********************
+Display all the customers whose city is liverpool and San Jose and sales Representative are working in San Francisco or London.
+
+SELECT c.customerName, c.city, e.firstName
+FROM employees e JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber)
+WHERE e.officeCode IN
+(SELECT officeCode FROM offices WHERE city in ("London", "San Francisco")) AND c.city IN ("liverpool", "San Jose");
+
+SELECT c.customerName, c.city, e.firstName
+fROM customers c, employees e
+WHERE c.salesRepEmployeeNumber = e.employeeNumber AND c.city IN ('liverpool', "San Jose")
+AND e.officeCode IN (SELECT officeCode FROM offices WHERE city in ("San Francisco", "London"))
+
+Display customerwise, productwise total product quantity ordered in Q4 of the financial year 2002-03
+
+SELECT c.customerName, p.ProductName, sum(od.quantityOrdered) total_qty_ordered
+FROM customers c, orders o, OrderDetails od, products p
+WHERE c.customerNumber = o.customerNumber AND o.orderNumber = od.orderNumber
+AND od.productCode = p.productCode AND o.orderDate BETWEEN '2003-01-01' AND '2003-03-31'
+GROUp BY c.customerName, p.ProductName;
+
+SELECT c.customerName, p.ProductName, sum(od.quantityOrdered) total_qty_ordered
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE year(o.orderDate) = 2003 AND month(o.orderDate) IN (1,2,3)
+GROUp BY c.customerName, p.ProductName;
+
+Display total amount paid by each customer
+
+SELECT c.customerName, sum(p.amount) total_amount
+FROM customers c, payments p
+WHERE c.customerNumber = p.customerNumber
+GROUp BY c.customerName;
+
+SELECT c.customerName, sum(p.amount) total_amount
+FROM customers c JOIN payments p USING (customerNumber)
+GROUp BY c.customerName;
+
+Display office wise employee count
+
+SELECT o.officeCode, o.city, count(e.employeeNumber) emp_count
+FROM offices o JOIN employees e USING (officeCode)
+GROUP BY o.officeCode, o.city;
+
+Display customerName who have same sales Representative as "Mini Auto Werke" and has creditLimit more than 80000
+
+SELECT customerName, creditLimit FROm customers 
+WHERE creditLimit > 80000 AND salesRepEmployeeNumber = 
+(SELECT salesRepEmployeeNumber FROM customers WHERE customerName like "Mini Auto%");
+
+Display employees from San Fransisco who handle customers from USA and UK who have ordered Buses and Trucks
+
+SELECT DISTINCT e.firstName, c.customerName, c.country
+FROM employees e, customers c, orders o, OrderDetails od, products p
+WHERE e.employeeNumber = c.salesRepEmployeeNumber AND
+c.customerNumber = o.customerNumber AND o.orderNumber = od.orderNumber
+AND od.productCode = p.productCode AND p.productline = "Trucks and Buses"
+AND e.officeCode = (SELECT officeCode FROM offices WHere city = 'San Francisco')
+AND c.country in ("USA", "UK");
+
+Display customerwise each productline wise count and sort data by country and customerName
+
+
+SELECT c.customerNumber, c.customerName, cc.Classic_Cars, p.Planes
+FROM
+customers c LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Classic_Cars"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Classic Cars"
+GROUP BY c.customerNumber, c.customerName) cc USING (customerNumber)
+LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Planes"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Planes"
+GROUP BY c.customerNumber, c.customerName) p USING (customerNumber);
