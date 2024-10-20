@@ -864,6 +864,8 @@ Aggregate Functions/ Group function:
     GROUP BY year(paymentDate), customerNumber;
 
 * Display order table data where date should be display as 6th Oct 2024
+    SELECT orderNumber, date_format(orderDate, "%D %b %Y") FROm Orders;
+
 * Display city wise customer count
     SELECT city, count(customerNumber) FROM customers
     GROUP BY city;
@@ -885,4 +887,152 @@ Aggregate Functions/ Group function:
     GROUP BY city HAVING count(customerName)>3;
     
 * Display product wise order amount
-* Find the customer with highest average orders
+    SELECT productCode, sum(quantityOrdered), sum(quantityOrdered*priceEach)
+    FROm OrderDetails
+    GROUP BY productCode;
+
+* Find the customer with highest average orders (Joins)
+    SELECT customerNumber, avg(orderNumber)
+    FROM orders GROUP BY customerNumber;
+
+
+*************************** Subqueries ******************************
+******** Single Row
+
+Display all the employees who work in the same office like Martin
+
+SELECT firstName, lastName From employees WHERE officeCode = (SELECT officeCode FROM employees where firstName = "Martin");
+
+SELECT officeCode FROM employees where firstName = "Martin";
+
+Display all the customers handled by George
+
+SELECT customerName FROm customers 
+WHERE salesRepEmployeeNumber = (SELECT employeeNumber FROM employees WHERE firstName = "George");
+
+*Display all the employees who handle customers from UK
+
+SELECT firstName from employees WHERE employeeNumber = 
+(SELECT DISTINCT salesRepEmployeeNumber FROM customers WHERE country = "UK");
+
+
+SELECT DISTINCT salesRepEmployeeNumber FROM customers WHERE country = "USA";
+
+*********** IN in multiple row subqueries
+SELECT firstName from employees WHERE employeeNumber IN 
+(SELECT DISTINCT salesRepEmployeeNumber FROM customers WHERE country = "USA");
+
+
+IN
+ANY
+
+*Display all the products ordered by customers whose name begin with Auto
+
+SELECT ProductName, productline FROM products WHERE productCode IN
+(SELECT DISTINCT productCode FROM OrderDetails WHERE orderNumber IN 
+(SELECT orderNumber FROm orders WHERE customerNumber IN
+(SELECT customerNumber FROm customers WHERE customerName Like 'Auto%')));
+
+*Display all the customers from USA who have ordered Motorcycles in the year 2003
+
+SELECT customerName, country FROm customers 
+WHERE country ="USA" AND customerNumber IN
+(SELECT DISTINCT customerNumber FROM orders 
+WHERE year(OrderDate) = 2003 AND orderNumber IN 
+(SELECT DISTINCT orderNumber FROM OrderDetails WHERE productCode IN 
+(SELECT productCode FROM products where productline = "Motorcycles")));
+
+Display all the products whose price is greater than any motorcycle
+
+Select productCode, ProductName, productline, buyPrice
+FROM products WHERE productline="Motorcycles";
+
+> ANY
+< ANY
+
+Select productCode, ProductName, productline, buyPrice
+FROm products WHERE buyPrice > ANY (select buyPrice FROm products WHERE productline="Motorcycles");
+
+Display all the products greater than all the Motorcycles
+
+Select productCode, ProductName, productline, buyPrice
+from products Where buyPrice > ALL (select buyPrice FROm products WHERE productline="Motorcycles" order by buyPrice);
+
+Select productCode, ProductName, productline, buyPrice
+from products Where buyPrice < ALL (select buyPrice FROm products WHERE productline="Motorcycles");
+
+*Display all the employees who work on the same profile and office like Pamela
+    SELECT firstName, lastName, officeCode FROm employees
+    WHERE officeCode = (SELECT officeCode from employees WHERE firstName = "Pamela")
+    AND jobTitle = (SELECT jobTitle from employees WHERE firstName = "Pamela");
+
+    SELECT firstName, lastName, officeCode FROm employees
+    WHERE (officeCode, jobTitle) IN (SELECT officeCode, jobTitle FROM employees
+    WHERE firstName = "Pamela");
+
+
+    SELECT customerName FROm
+    (SELECT * FROM customers WHERE country in ('USA', 'UK') order by customerName) usa_uk;
+
+
+    Update creditLimit of all the customer who are handled by Larry by 5%
+
+    UPDATE customers SET creditLimit = creditLimit + (creditLimit*0.05)
+    WHERE salesRepEmployeeNumber = 
+    (SELECT employeeNumber FROM employees WHERE firstName = "Larry");
+
+    Subqueries in DDL 
+
+    CREATE TABLE employee_master AS (SELECT employeeNumber, CONCAT(firstName, " ", lastName) as full_name, email, officeCode FROM employees);
+
+    -> Enclosed in ()
+    -> Single row subqueries we can use Relational operator =, >, <, >= , <=, !=, <>
+    -> Subqueries are always on the right side
+    -> Multiple row then we IN, ANY, ALL
+    -> We can write subquery inside another subquery
+    -> Don't add Order by clause subquery
+
+INNER JOIN or EQUI JOIN
+
+SELECT column_list
+FROM table_list
+WHERE equal condition to the columns of the table_list
+
+SELECT * FROM
+customers, employees
+WHERE customers.salesRepEmployeeNumber = employees.employeeNumber
+
+
+SELECT c.customerName, e.firstName
+FROM employees e, customers c
+WHERE e.employeeNumber = c.salesRepEmployeeNumber;
+
+Join using ON clause
+SELECT column_list FROM table_name JOIN table_name ON (col = col);
+
+SELECT e.employeeNumber, e.firstName, o.city
+FROM employees e JOIN offices o ON (e.officeCode = o.officeCode);
+
+Join using using clause
+PK and FK column name is same 
+
+SELECT column_list FROM table_name JOIN table_name USING (column_name);
+
+SELECT e.employeeNumber, e.firstName, o.city
+FROM employees e JOIN offices o USING (officeCode);
+
+SELECT c.customerName, sum(p.amount)
+FROM customers c JOIN payments p USING (customerNumber)
+GROUP BY c.customerName;
+
+SELECT e.firstName, o.city, c.customerName, c.city
+FROM employees e, offices o, customers c
+WHERE e.officeCode = o.officeCode AND e.employeeNumber = c.salesRepEmployeeNumber;
+
+SELECT e.firstName, o.city, c.customerName, c.city
+FROM employees e JOIN offices o ON (o.officeCode = e.officeCode)
+JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
+
+SELECT e.firstName, o.city, c.customerName, c.city
+FROM employees e JOIN offices o USING (officeCode)
+JOIN customers c ON (e.employeeNumber = c.salesRepEmployeeNumber);
