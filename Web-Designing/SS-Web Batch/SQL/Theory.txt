@@ -1186,7 +1186,8 @@ AND c.country in ("USA", "UK");
 Display customerwise each productline wise count and sort data by country and customerName
 
 
-SELECT c.customerNumber, c.customerName, cc.Classic_Cars, p.Planes
+SELECT c.customerNumber, c.customerName, cc.Classic_Cars, p.Planes, m.Motorcycles,
+s.Ships, t.Trains, tab.Trucks_and_Buses, vc.Vintage_Cars
 FROM
 customers c LEFT JOIN
 (SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Classic_Cars"
@@ -1196,9 +1197,158 @@ JOIN products p USING (productCode)
 WHERE p.productline = "Classic Cars"
 GROUP BY c.customerNumber, c.customerName) cc USING (customerNumber)
 LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Motorcycles"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Motorcycles"
+GROUP BY c.customerNumber, c.customerName) m USING (customerNumber)
+LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Ships"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Ships"
+GROUP BY c.customerNumber, c.customerName) s USING (customerNumber)
+LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Trains"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Trains"
+GROUP BY c.customerNumber, c.customerName) t USING (customerNumber)
+LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Trucks_and_Buses"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Trucks and Buses"
+GROUP BY c.customerNumber, c.customerName) tab USING (customerNumber)
+LEFT JOIN
+(SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Vintage_Cars"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Vintage Cars"
+GROUP BY c.customerNumber, c.customerName) vc USING (customerNumber)
+LEFT JOIN
 (SELECT c.customerNumber, c.customerName, count(DISTINCT p.productCode) "Planes"
 FROM customers c JOIN orders o USING (customerNumber)
 JOIN OrderDetails od USING (orderNumber)
 JOIN products p USING (productCode)
 WHERE p.productline = "Planes"
-GROUP BY c.customerNumber, c.customerName) p USING (customerNumber);
+GROUP BY c.customerNumber, c.customerName) p USING (customerNumber)
+;
+
+
+CREATE VIEW customer_productline_count AS
+SELECT c.customerNumber, c.customerName, o.orderDate, p.productline, count(p.productCode) qty
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+GROUP BY c.customerNumber, c.customerName, o.orderDate, p.productline;
+
+SELECT * from customer_productline_count;
+
+SELECT  c.customerNumber, c.customerName, sum(cc.qty) Classic_Cars
+FROM customers c LEFT JOIN (SELECT * FROM customer_productline_count WHERE productline = "Classic Cars" AND orderDate BETWEEN "2004-04-01" AND "2005-03-31") cc USING (customerNumber)
+GROUP BY c.customerNumber, c.customerName;
+
+CREATE VIEW plane_count AS
+SELECT c.customerNumber, o.orderDate, count(DISTINCT p.productCode) "Planes"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Planes"
+GROUP BY c.customerNumber, o.orderDate;
+
+CREATE VIEW classic_cars_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Classic_Cars"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Classic Cars"
+GROUP BY c.customerNumber, o.OrderDate;
+
+CREATE VIEW motorcycles_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Motorcycles"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Motorcycles"
+GROUP BY c.customerNumber, o.OrderDate;
+
+CREATE VIEW ships_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Ships"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Ships"
+GROUP BY c.customerNumber, o.OrderDate;
+
+CREATE VIEW trains_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Trains"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Trains"
+GROUP BY c.customerNumber, o.OrderDate;
+
+CREATE VIEW trucks_buses_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Trucks_and_Buses"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Trucks and Buses"
+GROUP BY c.customerNumber, o.OrderDate;
+
+CREATE VIEW vintage_cars_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Vintage_Cars"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Vintage Cars"
+GROUP BY c.customerNumber, o.OrderDate;
+
+
+SELECT c.customerNumber, c.customerName, sum(p.Planes) planes, 
+sum(m.Motorcycles) Motorcycles, 
+sum(vc.Vintage_Cars) Vintage_Cars, 
+sum(cc.Classic_Cars) Classic_Cars, 
+sum(tb.Trucks_and_Buses) Trucks_and_Buses, 
+sum(t.Trains) Trains, sum(s.Ships) ships
+FROM customers c LEFT JOIN plane_count p USING (customerNumber)
+LEFT JOIN motorcycles_count m USING (customerNumber)
+LEFT JOIN vintage_cars_count vc USING (customerNumber)
+LEFT JOIN classic_cars_count cc USING (customerNumber)
+LEFT JOIN trucks_buses_count tb USING (customerNumber)
+LEFT JOIN trains_count t USING (customerNumber)
+LEFT JOIN ships_count s USING (customerNumber)
+WHERE p.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR 
+m.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR
+vc.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR
+cc.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR
+tb.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR
+t.orderDate BETWEEN "2004-04-01" AND "2005-03-31" OR
+s.orderDate BETWEEN "2004-04-01" AND "2005-03-31"
+GROUP BY c.customerNumber, c.customerName;
+
+CREATE OR REPLACE VIEW vintage_cars_count AS
+SELECT c.customerNumber, o.OrderDate, count(DISTINCT p.productCode) "Vintage_Cars"
+FROM customers c JOIN orders o USING (customerNumber)
+JOIN OrderDetails od USING (orderNumber)
+JOIN products p USING (productCode)
+WHERE p.productline = "Vintage Cars"
+GROUP BY c.customerNumber, o.OrderDate;
+
+
+
+******************* DCL *******************
+CREATE USER student identified by "Hunarho";
+CREATE USER student@localhost identified by "Hunarho";
+
+GRANT SELECT ON sample_sales_db.* TO student@localhost;
+
+SHOW GRANTS FOR student@localhost
+
+REVOKE ALL ON sample_sales_db.* FROM student@localhost;
