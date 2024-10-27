@@ -1352,3 +1352,179 @@ GRANT SELECT ON sample_sales_db.* TO student@localhost;
 SHOW GRANTS FOR student@localhost
 
 REVOKE ALL ON sample_sales_db.* FROM student@localhost;
+
+************Doubts************
+Display all the customers who are handled by Pamela, Leslie, George from Canada and USA who have ordered motorcycles.
+
+SELECT customerName, city, country, salesRepEmployeeNumber FROM customers WHERE customerNumber IN
+(SELECT DISTINCT customerNumber FROM orders WHERE orderNumber IN 
+(SELECT DISTINCT orderNumber FROm OrderDetails WHERE ProductCode IN
+(SELECT productCode FROm Products WHERE productline = "Motorcycles"))) AND country IN ("France", "Canada", "USA")
+AND salesRepEmployeeNumber IN 
+(SELECT employeeNumber FROM employees WHERE firstName IN ("Pamela", "Leslie", "George"));
+
+*********** Procedures *************
+
+CREATE PROCEDURE getAllProducts()
+begin
+    SELECT * FROM products;
+END;
+//
+
+CALL getAllProducts();//
+
+Write a procedure that will accept product name and quantity and will return the total amount payable.
+
+CREATE PROCEDURE getPayableAmount(IN prod_name varchar(70), IN qty int)
+BEGIN
+    SELECT MSRP*qty FROM products 
+    WHERE ProductName LIKE prod_name AND quantityInStock >= qty;
+END;
+//
+
+DROP PROCEDURE getPayableAmount;
+
+CALL getPayableAmount("1969 Harley Davidson Ultimate Chopper", 10);
+
+Write a procedure to return total order in a particular status and one particular month and year
+
+CREATE PROCEDURE CountOrderByStatusMonthYear(IN orderStatus varchar(15), IN year int, IN month int, OUT total int)
+BEGIN
+    SELECT count(orderNumber) INTO total
+    FROM orders 
+    WHERE status = orderStatus AND year(orderDate) = year AND month(orderDate) = month;
+END;
+//
+
+CALL CountOrderByStatusMonthYear("Shipped", 2004, 7, @total)//
+
+SELECT @total//
+
+CREATE PROCEDURE counter(INOUT count int, IN increment int)
+BEGIN 
+    SET count = count + increment;
+END//
+
+SET @ctr = 2//
+
+CALL counter(@ctr, 2);//
+
+SELECT @ctr//
+
+************ IF ELSEIF ELSE ****************
+CREATE PROCEDURE getCustomerLevel(
+    IN custNo int,
+    OUT custLevel varchar(10)
+)
+BEGIN
+    DECLARE crlmt decimal(10,2);
+    SELECT creditLimit INTO crlmt FROM customers WHERE customerNumber = custNo;
+    IF crlmt < 10000 THEN
+        SET custLevel = "SILVER";
+    ELSEIF (crlmt >= 10000 AND crlmt <=50000) THEN
+        SET custLevel = "GOLD";
+    ELSEIF crlmt > 50000 THEN
+        SET custLevel = "PLATINUM";
+    ELSE
+        set custLevel = "NA";
+    END IF;
+END;//
+
+CALL getCustomerLevel(486, @lvl)//
+
+SELECT @lvl//
+
+************** Functions ******************
+CREATE FUNCTION customerLevel(crlmt decimal(10,2)) RETURNS varchar(10)
+DETERMINISTIC
+BEGIN
+    DECLARE lvl varchar(10);
+    IF (crlmt > 0 AND crlmt < 10000) THEN
+        SET lvl = "SILVER";
+    ELSEIF (crlmt >= 10000 AND crlmt <=50000) THEN
+        SET lvl = "GOLD";
+    ELSEIF crlmt > 50000 THEN
+        SET lvl = "PLATINUM";
+    ELSE
+        set lvl = "NA";
+    END IF;
+    RETURN lvl;
+END;//
+
+SELECT customerNumber, customerName, creditLimit, customerLevel(creditLimit) Customer_Level
+FROM customers;
+
+********* WHILE & REPEAT LOOP *******************
+
+CREATE FUNCTION testing_while_loop() RETURNS varchar(255)
+DETERMINISTIC
+BEGIN
+    DECLARE x INT DEFAULT 1;
+    DECLARE str varchar(255);
+    SET str = "";
+    WHILE x <= 5 DO
+        SET str = CONCAT(str, x, "-");
+        SET x = x+1;
+    END WHILE;
+    RETURN str;
+END;//
+
+CREATE FUNCTION testing_repeat_loop() RETURNS varchar(255)
+DETERMINISTIC
+BEGIN
+    DECLARE x INT DEFAULT 1;
+    DECLARE str varchar(255);
+
+    SET str = "";
+
+    REPEAT
+        SET str = CONCAT(str, x, "-");
+        SET x = x+1;
+    UNTIL x>5 
+    END REPEAT;
+
+    RETURN str;
+END;//
+
+************ Exception Handling **************
+
+CREATE TABLE article_tags(
+    article_id int,
+    tag_id int,
+    primary key(article_id, tag_id)
+)//
+
+CREATE PROCEDURE insert_into_articletag(IN aid INT, IN tid INT)
+BEGIN
+    DECLARE CONTINUE HANDLER FOR 1062
+    SELECT CONCAT("Duplicate Keys (", aid,", ", tid, ") found.") AS message;
+    -- Duplicate Keys (1, 1) Found.
+    INSERT INTO article_tags VALUES (aid, tid);
+    SELECT COUNT(*) FROM article_tags;
+END//
+
+
+Call insert_into_articletag(1, 1)
+Call insert_into_articletag(2, 1)
+Call insert_into_articletag(2, 1)
+
+Call insert_into_articletag(2, NULL)
+
+CREATE PROCEDURE insert_into_articletag_2(IN aid INT, IN tid INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR 1062
+    SELECT CONCAT("Duplicate Keys (", aid,", ", tid, ") found.") AS message;
+    -- Duplicate Keys (1, 1) Found.
+    DECLARE EXIT HANDLER FOR SQLSTATE '23000'
+    SELECT "An Error of 23000 has occurred";
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    SELECT "SQL Exception Occurred.";
+
+    INSERT INTO article_tags VALUES (aid, tid);
+    SELECT COUNT(*) FROM article_tags;
+    SELECT * FROM abc;
+END//
+
+Call insert_into_articletag_2(2, 2)
+Call insert_into_articletag_2(2, 4)
+Call insert_into_articletag_2(2, NULL)
