@@ -1528,3 +1528,130 @@ END//
 Call insert_into_articletag_2(2, 2)
 Call insert_into_articletag_2(2, 4)
 Call insert_into_articletag_2(2, NULL)
+
+********************** Cursor ************************
+
+CREATE TABLE c1 (i int);
+CREATE TABLE c2 (i int);
+CREATE TABLE c3 (i int);
+
+INSERT INTO c1 VALUES (5), (50), (100);
+
+INSERT INTO c2 VALUES (15), (20), (21);
+
+Insert the smallest numbers in each row of c1 & c2 into c3
+
+Function or Procedure? -- procedure
+Declare 2 variables
+Declare Exception for not found 
+Declare cur1 - c1
+Declare cur2 - c2
+
+open Cursor
+    loop:
+        fetch
+        compare and insert
+close Cursor
+
+CREATE Procedure p1()
+BEGIN
+    DECLARE x, y INT;
+    DECLARE done INT default FALSE;
+    DECLARE cur1 Cursor FOR select * from c1;
+    DECLARE cur2 Cursor FOR select * from c2;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+    OPEN cur1;
+    OPEN cur2;
+
+    read_loop: LOOP
+        FETCH cur1 into x;
+        FETCH cur2 into y;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+        IF x < y THEN
+            INSERT INTO c3 VALUES (x);
+        ELSE
+            INSERT INTO c3 VALUES (y);
+        END IF;
+    END LOOP;
+
+    CLOSE cur1;
+    CLOSE cur2;
+END;
+
+create semicolon seperated email list of all the employees
+
+procedure
+declare Cursor
+variable to load all single email id varchar(100)
+text datatype emaillist
+declare Exception 
+
+open cur1
+
+loop to CONCAT the email list
+close cur
+
+CREATE PROCEDURE emp_email_list(OUT emaillist TEXT)
+BEGIN
+    DECLARE done INT default FALSE;
+    DECLARE mail varchar(100);
+    DECLARE emp_cur Cursor FOR select email from employees;
+    DECLARE CONTINUE HANDLER FOR NOT found SET done = TRUE;
+    set emaillist = "";
+    -- select done;
+    OPEN emp_cur;
+    emp_read: LOOP
+        fetch emp_cur INTO mail;
+        -- select mail;
+        IF done THEN
+            LEAVE emp_read;
+        END IF;
+
+        SET emaillist = CONCAT(mail, ";", emaillist);
+    END LOOP;
+    CLOSE emp_cur;
+END;
+
+DROP PROCEDURE emp_email_list;
+
+CALL emp_email_list(@email_list)
+
+SELECT @email_list
+
+********************* Trigger **********************************
+
+Employee_log_table - id - int pk AUTO_INCREMENT
+                        created_at - datetime
+                        action - varchar (update | delete)
+
+CREATE TABLE `employees_log` (
+    id int primary key AUTO_INCREMENT,
+  `employeeNumber` int NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `extension` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `officeCode` varchar(10) NOT NULL,
+  `reportsTo` int DEFAULT NULL,
+  `jobTitle` varchar(50) NOT NULL,
+  created_at datetime,
+  action varchar(10));
+
+  DROP TRIGGER before_employees_update//
+  CREATE TRIGGER before_employees_update
+  BEFORE UPDATE ON employees FOR EACH ROW
+  BEGIN
+        DECLARE lname, fname, ext, mail, ocode, jtitle VARCHAR(100);
+        DECLARE empno, rTo INT;
+        SElECT * INTO empno, lname, fname, ext, mail, ocode, rTo, jtitle 
+        FROM employees WHERE employeeNumber = OLD.employeeNumber;
+
+        INSERT INTO employees_log SET employeeNumber = empno, lastName = lname, firstName = fname, extension=ext, email = mail, officeCode=ocode, reportsTo=rTo, jobTitle=jtitle, created_at=NOW(), action="update";
+  END;
+
+  SELECT * from employees_log;
+
+  UPDATE employees SET firstName="Angela" WHERE employeeNumber=1504;
