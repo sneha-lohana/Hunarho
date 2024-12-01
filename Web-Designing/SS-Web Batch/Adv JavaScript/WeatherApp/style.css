@@ -1,0 +1,56 @@
+body{
+    width: 100%;
+    margin: 0 auto;
+    background-image: linear-gradient(#43b0f6, #fff);
+    color: #444e54;
+    height: 110vh;
+}
+main{
+    margin-top: 40px;
+}
+.city-title{
+    max-width: 300px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: end;
+}
+.current-weather{
+    margin-top: 50px;
+}
+/* Temp-title */
+.temp-title{
+    font-size: 150px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.temp-subtitle{
+    font-size: 35px;
+    text-align: justify;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#cur-feel-temp{
+    font-style: italic;
+    font-weight: bold;
+}
+.todays-info{
+    margin: 15px 0px 15px 20px;
+    vertical-align: middle;
+}
+.todays-info p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    margin-top: 15px;
+}
+h2{
+    font-size: 40px;
+}
+.side-info{
+    position: relative;
+    left: 12px;
+    top: 55px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+}
+.side-info span{
+    font-size: 25px;
+}

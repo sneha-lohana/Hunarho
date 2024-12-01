@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asychronous Programming</title>
+</head>
+<body>
+    <!-- Sychronous programming -->
+    <!-- <script src="main1.js"></script> -->
+     <script>
+        // function loadScript(url){
+        //     const script = document.createElement("script");
+        //     script.src = url;
+        //     document.head.append(script);
+        // }
+
+        // loadScript("./main1.js");
+        // console.log(2);
+
+        // loadScript("./main2.js");
+        // sayHi();
+        
+        function loadScript(url, cb){
+            const script = document.createElement("script");
+            script.src = url;
+
+            script.onerror = () => cb(new Error("Error while loading the script."));
+            script.onload = () => cb(null, script);
+            document.head.append(script);
+        }
+
+        // loadScript("./main2.js", (error, script)=> {
+        //     if (error){
+        //         console.log(error);
+        //     }else{
+        //     console.log("Script Loaded" +  script.src);
+        //     sayHi();
+        // }
+        // });
+
+        // loadScript("./main3.js", (error, script)=> {
+        //     if (error){
+        //         console.log(error);
+        //     }else{
+        //     console.log("Script Loaded" +  script.src);
+        //     sayHi();
+        // }
+        // });
+
+        loadScript("./main2.js", (error, script) => {
+            if (error){
+                console.log(error);
+            }
+            else{
+                sayHi();
+                loadScript("./main1.js",  (error, script) =>  {
+                    if(error){
+                        //
+                    }
+                    else{
+                        // something
+                        loadScript()
+                        // Callback Hell
+                        // Pyramid doom
+                    }
+                })
+            }
+        })
+     </script>
+</body>
+</html>
