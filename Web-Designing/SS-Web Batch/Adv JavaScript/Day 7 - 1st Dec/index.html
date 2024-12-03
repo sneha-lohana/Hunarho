@@ -30,14 +30,14 @@
             document.head.append(script);
         }
 
-        // loadScript("./main2.js", (error, script)=> {
-        //     if (error){
-        //         console.log(error);
-        //     }else{
-        //     console.log("Script Loaded" +  script.src);
-        //     sayHi();
-        // }
-        // });
+        loadScript("./main2.js", (error, script)=> {
+            if (error){
+                console.log(error);
+            }else{
+            console.log("Script Loaded" +  script.src);
+            sayHi();
+        }
+        });
 
         // loadScript("./main3.js", (error, script)=> {
         //     if (error){

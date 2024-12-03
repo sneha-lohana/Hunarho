@@ -54,3 +54,47 @@ h2{
 .side-info span{
     font-size: 25px;
 }
+.daily-forcast{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+.forecast-card{
+    border: 1px solid #589ecd;
+    box-shadow: 0px 0px 12px 2px #43b0f6;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h3{
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.weather{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+.forecast-card span{
+    font-size: 20px;
+    font-style: italic;
+}
+footer{
+    position: relative;
+    bottom: -70px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #0a95c9;
+}
+a:hover{
+    color: #007bff;
+    font-weight: bold;
+}
