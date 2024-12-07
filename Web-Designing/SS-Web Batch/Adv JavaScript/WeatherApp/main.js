@@ -37,7 +37,7 @@ function setForecastData(data){
     console.log(data);
     const dailyforecast = document.querySelector(".daily-forcast");
     console.log(dailyforecast);
-    // dailyforecast.innerHTML = "";
+    dailyforecast.innerHTML = "";
     for (let i=1; i<data.forecastday.length; i++){
         console.log(i);
         
@@ -45,7 +45,8 @@ function setForecastData(data){
         forcastcard.className = "col forecast-card";
 
         dth3 = document.createElement('h3');
-        dth3.textContent = data.forecastday[i].date;
+        f_dt = new Date(data.forecastday[i].date);
+        dth3.textContent = dates[f_dt.getDate()] + " " + months[f_dt.getUTCMonth()]
         forcastcard.append(dth3);
 
         minh6 = document.createElement('h6');
@@ -97,6 +98,15 @@ function handleSubmit(event){
     getWeatherData(city);
 }
 
-getWeatherData("Mumbai");
+
 const searchBar = document.querySelector("#search-form");
 searchBar.addEventListener("submit", handleSubmit);
+
+navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    getWeatherData(`${position.coords.latitude},${position.coords.longitude}`);
+}, (error) => {
+    console.log(error);
+    getWeatherData("Mumbai");
+});

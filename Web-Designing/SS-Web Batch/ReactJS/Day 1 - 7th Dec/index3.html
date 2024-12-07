@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First JSX Element</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="../../../node_modules/react/umd/react.development.js"></script>
+    <script src="../../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Hello(){
+            return <h1>Hello React from Babel Code!</h1>
+        }
+
+        // function button(){
+        //     return <button>Click Me!</button>
+        // }
+        function Button(){
+            return <button>Click Me!</button>
+        }
+        
+        function HelloUser(){
+            const username = "Sneha";
+            return <h1>Hello {username}! {10+2} {Math.random()}</h1>
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // root.render(React.createElement(Hello));
+
+        // Shorter way to render React JSX
+        // root.render(<Hello />);
+        // root.render(<button />);
+        // root.render(<Button />);
+        root.render(<HelloUser />);
+    </script>
+</body>
+</html>

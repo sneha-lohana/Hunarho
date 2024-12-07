@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First React App</title>
+</head>
+<body>
+    <h1>Hello React!</h1>
+
+    <div id="root"></div>
+
+    <!-- Install ReactJS -->
+    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+
+    <script src="../../../node_modules/react/umd/react.development.js"></script>
+    <script src="../../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+    <script>
+        // const h1 = document.createElement("h1");
+        // h1.innerHTML = "Hello React!"
+        // const root = document.getElementById("root");
+        // root.append(h1);
+        const h1 = React.createElement("h1", null, "Hello React!");
+        const container = document.getElementById("root");
+        const root = ReactDOM.createRoot(container); // virtual DOM
+        root.render(h1);
+
+        // React Components
+    </script>
+</body>
+</html>

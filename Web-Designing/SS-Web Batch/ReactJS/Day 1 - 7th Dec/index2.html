@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Component</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="../../../node_modules/react/umd/react.development.js"></script>
+    <script src="../../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+    <script>
+        // function based component
+        // camelCase
+        // PascalCase
+        // function Hello(){
+        //     return React.createElement("h1", null, "Hello React from Function based Component.");
+        // }
+
+        // Class based component
+        class Hello extends React.Component{
+            render(){
+                return React.createElement("h1", null, "Hello React from Class based Component.");
+            }
+        }
+
+        // React JSX - JavaScript XML
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(React.createElement(Hello));
+    </script>
+</body>
+</html>
