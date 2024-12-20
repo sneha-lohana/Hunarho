@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './ProductList.css';
-import { useApi } from '../hooks/useApi';
 
 export default function ProductList() {
-    // const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [url, setUrl] = useState("http://localhost:3000/products");
 
-    const {data : products} = useApi(url);
+    const fetchProducts = useCallback(() => {
+        fetch(url) // asynchronus ajax call
+            .then(res => res.json())
+            .then(data => setProducts(data))
+    }, [url]);
+
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts])  
+
+    // useEffect(() => {
+    //     fetch(url) // asynchronus ajax call
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data))
+    // }, [url])  // [state, props] // [] - till will call useEffect only on 1st time pageload
+    // or hard refresh
+    console.log(url);
 
   return (
     <div className='product-list'>
@@ -21,7 +36,7 @@ export default function ProductList() {
             <button onClick={() => setUrl("http://localhost:3000/products?category=home-decoration")}>Home Decore</button>
         </div>
         <ul>
-            {products && products.map(product => (
+            {products.map(product => (
                 <li key={product.id}>
                     <strong>{product.title}</strong>
                     <p>${product.price}</p>
