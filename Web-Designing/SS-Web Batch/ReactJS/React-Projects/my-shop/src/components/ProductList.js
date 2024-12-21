@@ -6,7 +6,7 @@ export default function ProductList() {
     // const [products, setProducts] = useState([]);
     const [url, setUrl] = useState("http://localhost:3000/products");
 
-    const {data : products} = useApi(url);
+    const {data : products, loading, error} = useApi(url);
 
   return (
     <div className='product-list'>
@@ -19,6 +19,10 @@ export default function ProductList() {
             <button onClick={() => setUrl("http://localhost:3000/products?category=skincare")}>Skin Care</button>
             <button onClick={() => setUrl("http://localhost:3000/products?category=groceries")}>Groceries</button>
             <button onClick={() => setUrl("http://localhost:3000/products?category=home-decoration")}>Home Decore</button>
+        </div>
+        <div>
+            {loading && 'Loading...'}
+            {error}
         </div>
         <ul>
             {products && products.map(product => (
