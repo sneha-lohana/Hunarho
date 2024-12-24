@@ -6,6 +6,7 @@ import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products />
+            },
+            {
+                path: '/products/:prodId',
+                element: <ProductDetail />
             }
         ]
     }

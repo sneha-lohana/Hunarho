@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProductList.css';
 import { useApi } from '../hooks/useApi';
+import { Link } from 'react-router-dom';
 
 export default function ProductList() {
     // const [products, setProducts] = useState([]);
@@ -30,6 +31,7 @@ export default function ProductList() {
                     <strong>{product.title}</strong>
                     <p>${product.price}</p>
                     <p>{product.description}</p>
+                    <Link to={`/products/${product.id}`}>Read More...</Link>
                 </li>
             ))}
         </ul>
