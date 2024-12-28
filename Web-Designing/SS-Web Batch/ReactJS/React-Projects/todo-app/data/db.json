@@ -9,6 +9,11 @@
       "id": "2",
       "title": "Buy groceries",
       "completed": false
+    },
+    {
+      "id": "3a4f",
+      "title": "Buy Milk",
+      "completed": false
     }
   ]
 }
